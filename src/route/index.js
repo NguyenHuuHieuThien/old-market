@@ -7,6 +7,8 @@ import SignIn from '../layout/Login/SignIn';
 import SignUp from '../layout/Login/SignUp';
 import ProductList from '../layout/Admin/productList';
 import Users from '../layout/Admin/UserList';
+import Trash from '../layout/Admin/trash';
+import ProfilePage from '../layout/Profile';
 
 
 //Public Routes
@@ -19,6 +21,8 @@ export const publicRoutes = [
   { path: '/signup', component: SignUp },
   { path: '/admin/product-list', component: ProductList },
   { path: '/admin/users', component: Users },
+  { path: '/admin/trash', component: Trash },
+  { path: '/profile', component: ProfilePage },
 ];
 
 export const privateRoutes = [];

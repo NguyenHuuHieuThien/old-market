@@ -27,9 +27,7 @@ export default function Navbars() {
                             </li>
                             
                         </ul>
-                        <form class="d-flex">
-
-                        </form>
+                        
                     </div>
                 </div>
             </nav>

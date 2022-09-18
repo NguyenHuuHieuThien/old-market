@@ -2,7 +2,8 @@ import {
     MDBInputGroup,
     MDBBtn,
     MDBBadge,
-    MDBIcon
+    MDBIcon,
+    MDBTable, MDBTableHead, MDBTableBody
 } from 'mdb-react-ui-kit';
 import { Row, Col, Button } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table';
@@ -10,6 +11,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash, faCheckDouble, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+
 
 
 import ModalReact from "../../component/Modal";
@@ -29,6 +31,7 @@ const Users = [
         phone: '0123456789',
         address: 'Hanoi',
         role: 'admin',
+        badge: 'success'
     },
     {
         name: 'anhdd',
@@ -37,6 +40,7 @@ const Users = [
         phone: '0123456789',
         address: 'Gia Lai',
         role: 'user',
+        badge: 'warning'
     },
     {
         name: 'namnc',
@@ -45,6 +49,7 @@ const Users = [
         phone: '0123456789',
         address: 'Đà Nẵng',
         role: 'user',
+        badge: 'warning'
     },
     {
         name: 'chiennd',
@@ -53,6 +58,7 @@ const Users = [
         phone: '0123456789',
         address: 'Đà Nẵng',
         role: 'user',
+        badge: 'warning'
     },
 
 ]
@@ -93,25 +99,18 @@ export default function UserList() {
 
             <Row>
                 <Col md={2}>
-                    <SideBars/>
+                    <SideBars />
                 </Col>
                 <Col md={8}>
-                    <h1 className="mb-3 text-center">User List</h1>
+                    <h1 className="mb-3 text-center text-uppercase">User List</h1>
                     <Row>
                         <Col>
                             <div className="col-6 d-flex justify-content-start mb-2">
                                 {actions.map((action, index) => (
-                                    action.name === 'trash' ?
-                                        <button role="button" key={index} className={`border-0 me-2 py-1 text-white bg-${action.bg}`}>
-                                            <FontAwesomeIcon icon={action.icon} className="mr-2" /> {action.name}
-                                        </button>
-
-                                        :
-                                        <button role="button" key={index} className={`border-0 me-1 py-1 text-white bg-${action.bg}`}>
-                                            <FontAwesomeIcon icon={action.icon} className="mr-2" /> {action.name}
-                                        </button>
+                                    <button role="button" key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
+                                        <FontAwesomeIcon icon={action.icon} className="mr-0" /> {action.name}
+                                    </button>
                                 ))}
-
 
                             </div>
                         </Col>
@@ -124,17 +123,117 @@ export default function UserList() {
                     </Row>
                     <Col xs={2}>
                         <div className='d-flex justify-content-start'>
-                            <button className='border-0 me-2 py-1 text-white bg-warning' onClick={handleShow}>
-                                <Link>
+                            <Link to='/admin/trash'>
                                 <FontAwesomeIcon icon={faTrashCan} /> Go to Trash (9)
-                                </Link>
-                                
-                            </button>
+                            </Link>
                         </div>
                     </Col>
 
 
                     <div className="mt-4 mr-5">
+                        {/* <Table striped bordered hover>
+                            <MDBTableHead>
+                                <tr>
+                                    <th scope='col'>Name</th>
+                                    <th scope='col'>Title</th>
+                                    <th scope='col'>Status</th>
+                                    <th scope='col'>Position</th>
+                                    <th scope='col'>Actions</th>
+                                </tr>
+                            </MDBTableHead>
+                            <MDBTableBody>
+                                <tr>
+                                    <td>
+                                        <div className='d-flex align-items-center'>
+                                            <img
+                                                src='https://mdbootstrap.com/img/new/avatars/8.jpg'
+                                                alt=''
+                                                style={{ width: '45px', height: '45px' }}
+                                                className='rounded-circle'
+                                            />
+                                            <div className='ms-3'>
+                                                <p className='fw-bold mb-1'>John Doe</p>
+                                                <p className='text-muted mb-0'>john.doe@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p className='fw-normal mb-1'>Software engineer</p>
+                                        <p className='text-muted mb-0'>IT department</p>
+                                    </td>
+                                    <td>
+                                        <MDBBadge color='success' pill>
+                                            Admin
+                                        </MDBBadge>
+                                    </td>
+                                    <td>Senior</td>
+                                    <td>
+                                        <button type="button" className="btn btn-outline-info me-2">Sửa</button>
+                                        <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div className='d-flex align-items-center'>
+                                            <img
+                                                src='https://mdbootstrap.com/img/new/avatars/6.jpg'
+                                                alt=''
+                                                style={{ width: '45px', height: '45px' }}
+                                                className='rounded-circle'
+                                            />
+                                            <div className='ms-3'>
+                                                <p className='fw-bold mb-1'>Alex Ray</p>
+                                                <p className='text-muted mb-0'>alex.ray@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p className='fw-normal mb-1'>Consultant</p>
+                                        <p className='text-muted mb-0'>Finance</p>
+                                    </td>
+                                    <td>
+                                        <MDBBadge color='primary' pill>
+                                            Onboarding
+                                        </MDBBadge>
+                                    </td>
+                                    <td>Junior</td>
+                                    <td>
+                                        <button type="button" className="btn btn-outline-info me-2">Sửa</button>
+                                        <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div className='d-flex align-items-center'>
+                                            <img
+                                                src='https://mdbootstrap.com/img/new/avatars/7.jpg'
+                                                alt=''
+                                                style={{ width: '45px', height: '45px' }}
+                                                className='rounded-circle'
+                                            />
+                                            <div className='ms-3'>
+                                                <p className='fw-bold mb-1'>Kate Hunington</p>
+                                                <p className='text-muted mb-0'>kate.hunington@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p className='fw-normal mb-1'>Designer</p>
+                                        <p className='text-muted mb-0'>UI/UX</p>
+                                    </td>
+                                    <td>
+                                        <MDBBadge color='warning' pill>
+                                            Awaiting
+                                        </MDBBadge>
+                                    </td>
+                                    <td>Senior</td>
+                                    <td>
+                                        <button type="button" className="btn btn-outline-info me-2">Sửa</button>
+                                        <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
+                                    </td>
+                                </tr>
+                            </MDBTableBody>
+                        </Table> */}
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
@@ -157,10 +256,14 @@ export default function UserList() {
                                         <td>{User.email}</td>
                                         <td>{User.phone}</td>
                                         <td>{User.address}</td>
-                                        <td>{User.role}</td>
                                         <td>
-                                            <button type="button" className="btn btn-outline-info me-2">Sửa</button>
-                                            <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
+                                            <MDBBadge color={User.badge} pill>
+                                                {User.role}
+                                            </MDBBadge>
+                                        </td>
+                                        <td>
+                                            <button type="button" className="btn btn-info me-2">Update</button>
+                                            <button type="button" className="btn btn-danger" onClick={handleShow}>Delete</button>
                                         </td>
                                     </tr>
                                 )) : <tr ><td colSpan="8">No user.<Link>Create new user</Link></td></tr>}

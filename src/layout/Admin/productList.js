@@ -3,6 +3,14 @@ import { Row, Col, Button } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table';
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";   
+import { faPlus, faTrash, faCheckDouble, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import {
+    MDBInputGroup,
+    MDBBtn,
+    MDBBadge,
+    MDBIcon
+} from 'mdb-react-ui-kit';
 
 const products = [
     {
@@ -46,6 +54,13 @@ const products = [
         quantity: 10
     },
 ]
+
+const actions = [
+    { name: 'selectAll', icon: faCheckDouble, bg: 'success' },
+    { name: 'create', icon: faPlus, bg: 'primary' },
+    { name: 'delete', icon: faTrash, bg: 'danger' },
+
+]
 export default function ProductList() {
     const [show, setShow] = useState(false);
 
@@ -78,7 +93,32 @@ export default function ProductList() {
                 </Col>
                 <Col md={8}>
 
-                    <h1>Product List</h1>
+                    <h1 className="text-center mt-4 text-uppercase">Product List</h1>
+                    <Row>
+                        <Col>
+                            <div className="col-6 d-flex justify-content-start mb-2">
+                                {actions.map((action, index) => (
+                                    action.name === 'trash' ?
+                                        <button role="button" key={index} className={`border-0 me-2 py-1 text-white bg-${action.bg}`}>
+                                            <FontAwesomeIcon icon={action.icon} className="mr-2" /> {action.name}
+                                        </button>
+
+                                        :
+                                        <button role="button" key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
+                                            <FontAwesomeIcon icon={action.icon} className="mr-2" /> {action.name}
+                                        </button>
+                                ))}
+
+
+                            </div>
+                        </Col>
+                        <Col xs={4}>
+                            <MDBInputGroup className='mb-3'>
+                                <input className='form-control' placeholder="Recipient's username" type='text' />
+                                <MDBBtn outline>Button</MDBBtn>
+                            </MDBInputGroup>
+                        </Col>
+                    </Row>
                     <div className="mt-5 mr-5">
                         <Table striped bordered hover>
                             <thead>
@@ -100,8 +140,8 @@ export default function ProductList() {
                                         <td>{product.quantity}</td>
                                         <td>{product.date}</td>
                                         <td>
-                                            <button className="btn btn-success me-2">Xác nhận</button>
-                                            <button className="btn btn-danger">Hủy</button>
+                                            <button className="btn btn-success me-2">Confirm</button>
+                                            <button className="btn btn-danger">Remove</button>
                                         </td>
                                     </tr>
                                 ))}
