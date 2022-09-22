@@ -9,21 +9,60 @@ import SideNav, {
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faListOl, faUsers, faUsersSlash } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faListOl, faUsers, faUsersSlash, faTimes, faBars} from '@fortawesome/free-solid-svg-icons';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import { publicRoutes } from '../../route';
 
+
 export default function SideBars({ path, Element }) {
     const [show, setShow] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
+    const handleTrigger = () => setIsOpen(!isOpen);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <>
-            {/* <Router> */}
+            <div className="App">
+                <div className="page">
 
-            <SideNav
+                    <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
+                        <div className="trigger" onClick={handleTrigger}>
+                            <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
+                        </div>
+
+                       <Link to='/' style={{textDecoration: 'none'}}>
+                       <div className="sidebar-position">
+                            <FontAwesomeIcon icon={faHome} />
+                            <span>Home</span>
+                        </div>
+                       </Link>
+                       <Link to='/admin/product-list' style={{textDecoration: 'none'}}>
+                       <div className="sidebar-position">
+                            <FontAwesomeIcon icon={faListOl} />
+                            <span>Product</span>
+                        </div>
+                       </Link>
+                       <Link to='/admin/users' style={{textDecoration: 'none'}}>
+                       <div className="sidebar-position">
+                            <FontAwesomeIcon icon={faUsers} />
+                            <span>Users</span>
+                        </div>
+                       </Link>
+                       <Link to='/admin/trash' style={{textDecoration: 'none'}}>
+                       <div className="sidebar-position">
+                            <FontAwesomeIcon icon={faUsersSlash} />
+                            <span>Trash</span>
+                        </div>
+                       </Link>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            {/* <SideNav
                 onSelect={selected => {
                     // Add your code here
                 }}
@@ -76,7 +115,7 @@ export default function SideBars({ path, Element }) {
                         </NavItem>
                     </NavItem>
                 </SideNav.Nav>
-            </SideNav>
+            </SideNav> */}
 
 
         </>

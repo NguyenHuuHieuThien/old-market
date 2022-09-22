@@ -134,7 +134,7 @@ export default function ProductList() {
                             <tbody>
                                 {products.map((product, index) => (
                                     <tr key={index}>
-                                        <td><img src={product.image} alt="" width="100px" /></td>
+                                        <td className="col-1"><img src={product.image} alt="" width="100px" /></td>
                                         <td>{product.name}</td>
                                         <td>{product.price}</td>
                                         <td>{product.quantity}</td>

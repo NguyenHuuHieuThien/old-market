@@ -9,6 +9,7 @@ import ProductList from '../layout/Admin/productList';
 import Users from '../layout/Admin/UserList';
 import Trash from '../layout/Admin/trash';
 import ProfilePage from '../layout/Profile';
+import UpdatePage from '../layout/UpdatePage';
 
 
 //Public Routes
@@ -23,6 +24,7 @@ export const publicRoutes = [
   { path: '/admin/users', component: Users },
   { path: '/admin/trash', component: Trash },
   { path: '/profile', component: ProfilePage },
+  { path: '/update/:id', component: UpdatePage },
 ];
 
 export const privateRoutes = [];

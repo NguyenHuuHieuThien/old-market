@@ -5,7 +5,7 @@ import {
     MDBIcon,
     MDBTable, MDBTableHead, MDBTableBody
 } from 'mdb-react-ui-kit';
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, Form  } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,6 +25,7 @@ const actions = [
 ]
 const Users = [
     {
+        id: 1,
         name: 'thiennhh',
         avt: 'https://znews-photo.zingcdn.me/w660/Uploaded/kbd_pilk/2021_06_27/hua_khai5.jpg',
         email: 'nguyenthienn3347@gmail.com',
@@ -34,6 +35,7 @@ const Users = [
         badge: 'success'
     },
     {
+        id: 2,
         name: 'anhdd',
         avt: 'https://znews-photo.zingcdn.me/w660/Uploaded/kbd_pilk/2021_06_27/hua_khai5.jpg',
         email: 'ducanh81@gmail.com',
@@ -43,6 +45,7 @@ const Users = [
         badge: 'warning'
     },
     {
+        id: 3,
         name: 'namnc',
         avt: 'https://znews-photo.zingcdn.me/w660/Uploaded/kbd_pilk/2021_06_27/hua_khai5.jpg',
         email: 'congnam43@gmail.com',
@@ -52,6 +55,7 @@ const Users = [
         badge: 'warning'
     },
     {
+        id: 4,
         name: 'chiennd',
         avt: 'https://znews-photo.zingcdn.me/w660/Uploaded/kbd_pilk/2021_06_27/hua_khai5.jpg',
         email: 'dangchien43@gmail.com',
@@ -64,38 +68,33 @@ const Users = [
 ]
 export default function UserList() {
     const [show, setShow] = useState(false);
-
+    const [users, setUsers] = useState(Users);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [userid, setUserId] = useState();
+    const [ischecked, setIsChecked] = useState(false);
+    const handleShow = (id) => {
+        setShow(true);
+        setUserId(id)
+    }
+    const selectAll = () => {
+        setIsChecked(!ischecked);
+        users.map((user) => {
+            user.isChecked = ischecked;
+        })
+    }
+const checkId = (id) => {
+    let a =[...id]
+    console.log(a);
+}
+    const deleteUser = () => {
+        let newUsers =  users.filter(user => user.id !== userid);
+        setUsers(newUsers)
+        setShow(false);
+    }
 
     return (
         <div className='mt-4'>
-            <ModalReact show={show} handleClose={handleClose} handleShow={handleShow}>abc</ModalReact>
-            <ModalReact show={show} handleClose={handleClose} handleShow={handleShow} size='lg' title='Delete user'>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên</th>
-                            <th>Email</th>
-                            <th>SDT</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Thien</td>
-                            <td>nguyenthienn3347@gmail.com</td>
-                            <td>0941549525</td>
-                            <td>
-                                <button type="button" className="btn btn-warning me-2">Back up</button>
-                                <button type="button" className="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </ModalReact>
+            <ModalReact show={show} handleClose={handleClose} deleteUser = {deleteUser} handleShow={handleShow}>Do you want delete user?</ModalReact>
 
             <Row>
                 <Col md={2}>
@@ -107,6 +106,10 @@ export default function UserList() {
                         <Col>
                             <div className="col-6 d-flex justify-content-start mb-2">
                                 {actions.map((action, index) => (
+                                    action.name === 'selectAll' ? 
+                                    <button role="button" onClick={selectAll} key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
+                                    <FontAwesomeIcon icon={action.icon} className="mr-0" /> {action.name}
+                                </button> : 
                                     <button role="button" key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
                                         <FontAwesomeIcon icon={action.icon} className="mr-0" /> {action.name}
                                     </button>
@@ -237,6 +240,7 @@ export default function UserList() {
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>STT</th>
                                     <th>Avatar</th>
                                     <th>Tên</th>
@@ -248,25 +252,26 @@ export default function UserList() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {Users.length > 0 ? Users.map((User, index) => (
+                                {users.length > 0 ? users.map((user, index) => (
                                     <tr key={index}>
+                                        <td><Form.Check aria-label="option 1" role="button" onClick={()=> checkId(user.id)}/></td>
                                         <td>{index + 1}</td>
-                                        <td className="col-1"><img className="col-8 rounded-pill" src={User.avt} /></td>
-                                        <td>{User.name}</td>
-                                        <td>{User.email}</td>
-                                        <td>{User.phone}</td>
-                                        <td>{User.address}</td>
+                                        <td className='col-1'><img style={{width: '50px', height:'50px', borderRadius: '50%'}} src={user.avt} /></td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.phone}</td>
+                                        <td>{user.address}</td>
                                         <td>
-                                            <MDBBadge color={User.badge} pill>
-                                                {User.role}
+                                            <MDBBadge color={user.badge} pill>
+                                                {user.role}
                                             </MDBBadge>
                                         </td>
                                         <td>
-                                            <button type="button" className="btn btn-info me-2">Update</button>
-                                            <button type="button" className="btn btn-danger" onClick={handleShow}>Delete</button>
+                                            <button type="button" className="btn btn-info me-2"><Link style={{textDecoration: 'none', color:'white'}} to={`/update/${user.id}`}>Update</Link></button>
+                                            <button type="button" className="btn btn-danger" onClick={()=>handleShow(user.id)}>Delete</button>
                                         </td>
                                     </tr>
-                                )) : <tr ><td colSpan="8">No user.<Link>Create new user</Link></td></tr>}
+                                )) : <tr ><td colSpan="8">No user.<Link to='/signup'>Create new user</Link></td></tr>}
 
                             </tbody>
                         </Table>
@@ -277,4 +282,4 @@ export default function UserList() {
 
     )
 
-}
+}  
