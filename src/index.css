@@ -23,6 +23,24 @@ body {
   padding: 0;
   margin: 0;
 }
+/* background */
+.bg-main{
+  background-color:#006266!important;
+}
+
+.bg-sub{
+  background-color:#1abc9c!important;
+}
+
+.bg-btn{
+  background-color:#16a085!important;
+}
+/*  */
+
+/* input css */
+input:focus{
+  border: 1px solid #fff;
+}
 
 .App {
   font-family: sans-serif;
@@ -103,6 +121,13 @@ body {
   align-items: center;
   justify-content: flex-end;
   padding: 0 12px 15px;
+}
+
+.bg-grdient{
+  background: linear-gradient( 67.33deg, #16a085 7.92%, #27ae60, #2ecc71 ) !important;
+}
+.border-main{
+  border: 1px solid #2ecc71 !important;
 }
 
 
