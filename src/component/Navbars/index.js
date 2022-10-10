@@ -1,73 +1,105 @@
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faHome, faUser, faBagShopping, faBell, faArrowRightToBracket, faPenToSquare, faSearch, faEdit } from "@fortawesome/free-solid-svg-icons"
-
+import { faBars, faHome, faUser, faBagShopping, faBell, faArrowRightToBracket, faCartShopping, faPenToSquare, faSearch, faEdit } from "@fortawesome/free-solid-svg-icons"
+import { Dropdown } from "react-bootstrap"
 export default function Navbars() {
-    const menu = [
-        {
-            name: "Home",
-            link: "/",
-            icon: faHome
+    const menu = {
+        menu1: [
+            {
+                name: "Trang chủ",
+                link: "/",
+                icon: faHome
 
-        },
-        {
-            name: "ManagerStory",
-            link: "/",
-            icon: faUser
+            },
+            {
+                name: "Sản phẩm",
+                link: "/products",
+                icon: faBagShopping
 
-        },
-        {
-            name: "Order",
-            link: "/",
-            icon: faBagShopping
+            },
+            {
+                name: "Thông báo",
+                link: "/",
+                icon: faBell
 
-        },
-        {
-            name: "notify",
-            link: "/",
-            icon: faBell
+            },
+        ],
+        menu2: [
+            {
+                name: "Đăng nhập",
+                link: "/sign-in",
+                icon: faArrowRightToBracket
 
-        },
-        {
-            name: "post",
-            link: "/",
-            icon: faEdit
+            },
+            {
+                name: "Đăng ký",
+                link: "/sign-in",
+                icon: faArrowRightToBracket
 
-        },
-        {
-            name: "login",
-            link: "/login",
-            icon: faArrowRightToBracket
+            },
+        ],
+    }
 
-        },
-        {
-            name: "more",
-            link: "/",
-            icon: faBars
+    // {
+    //     name: "Quản Lý",
+    //     icon: faBars,
+    //     more: [
+    //         {
+    //             name: "Bài viết",
+    //             link: "/",
+    //             icon: faUser
 
-        },
+    //         },
 
-    ]
+    //         {
+    //             name: "Đăng tin",
+    //             link: "/",
+    //             icon: faEdit
+
+    //         },
+    //     ]
+
+    // },
+
+
     return (
         <div>
             <div className="bg-main">
                 <div className="container">
-                    <div className="d-flex pt-3 pb-3">
-                        <div>
-                            <img src="https://static.chotot.com/storage/marketplace/transparent_logo.png" />
-                        </div>
-                        <ul className="d-flex align-items-center m-0 ms-5 text-white">
-                            {menu.map((item, index) => (
-                                <li key={index} className="me-5 px-2 cursor-pointer text-center">
-                                    <span className="text-center"><FontAwesomeIcon icon={item.icon} className="me-2 fs-5" />{item.name}</span>
-                                </li>
+                    <div className="d-flex pt-3 pb-3 justify-content-between">
+                        <ul className="d-flex m-0 p-0  justify-content-between text-white">
+                            {menu.menu1.map((item, index) => (
+                                <Link key={index} to={item.link} className=" text-decoration-none">
+                                    <li className="me-2 px-2 cursor-pointer text-left">
+                                        <span className="text-left text-white"><FontAwesomeIcon icon={item.icon} className="me-2 fs-6" />{item.name}</span>
+                                    </li>
+                                </Link>
+                            ))}
+                        </ul>
+                        <ul className="d-flex m-0 p-0">
+                            {menu.menu2.map((item, index) => (
+                                <Link key={index} to={item.link} className=" text-decoration-none">
+                                    <li className="me-2 px-2 cursor-pointer text-left">
+                                        <span className="text-left text-white"><FontAwesomeIcon icon={item.icon} className="me-2 fs-6" />{item.name}</span>
+                                    </li>
+                                </Link>
                             ))}
                         </ul>
                     </div>
-                    <div className="d-flex pb-3 pt-1">
-                        <div className="flex-1 d-flex">
-                            <input type="text" className="w-75 p-2 flex-start outline-none input"/>
-                            <FontAwesomeIcon icon={faSearch} className="me-2 p-3 bg-btn text-white cursor-pointer px-4" />
+                    <div className="row pb-3 pt-1">
+                        <div className="me-3 col-2">
+                            <img className="w-75" src="https://static.chotot.com/storage/marketplace/transparent_logo.png" />
+                        </div>
+                        <div className="d-flex col-8 p-1 bg-white rounded-1">
+                            <div className="col-10">
+                                <input type="text" className="w-100 h-100 pe-3 flex-start outline-none input p-2" />
+                            </div>
+                            <div className="col-2 ps-1 d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={faSearch} className="fs-6 p-3 w-100 bg-btn text-white cursor-pointer rounded-1" />
+                            </div>
+                        </div>
+                        <div className="col-1 d-flex justify-content-center align-items-center ms-3">
+                            <FontAwesomeIcon icon={faCartShopping} className="text-white fs-3" />
                         </div>
                     </div>
                 </div>

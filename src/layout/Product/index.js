@@ -9,6 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { MDBInput } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
 
 import Navbars from "../../component/Navbars"
@@ -29,17 +30,26 @@ const categories = [
     'computer',
 ]
 
-const products = [
-    { name: 'Table', group: 'table', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a table' },
-    { name: 'Motobike', group: 'motobike', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a motobike' },
-    { name: 'Chair', group: 'chair', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a chair' },
-    { name: 'Cabinet', group: 'cabinet', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a cabinet' },
-    { name: 'Bed', group: 'bed', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
-]
+
 
 export default function ProductPage() {
+    const products = [
+        { id: 1, name: 'Table', group: 'table', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a table' },
+        { id: 2,name: 'Motobike', group: 'motobike', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a motobike' },
+        { id: 3, name: 'Chair', group: 'chair', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a chair' },
+        { id: 4, name: 'Cabinet', group: 'cabinet', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a cabinet' },
+        { id: 5,name: 'Bed', group: 'bed', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
+        { id: 6,name: 'Desk', group: 'table', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
+
+    ]
+
+    const [ productList, setProductList] = React.useState(products);
+
+    console.log(productList);
     const selectCategory = (category) => {
-        console.log(categories.find(item => item.group === category))
+        setProductList(products.filter((product) => product.group === category));
+        // let categorySelect = productList.filter(item => item.group === category)
+        // setProductList(categorySelect)
     }
     return (
         <div>
@@ -49,19 +59,19 @@ export default function ProductPage() {
                 <h1 className='text-uppercase me-5'>Products</h1>
                 <ul className='d-flex list-unstyled gap-2 mt-3'>
                     {categories.map((category, index) =>
-                        <li key={index} className='border border-primary ' role="button">
+                        <li key={index} onClick={() => selectCategory(category)} className='border border-primary ' role="button">
                             <a className='text-xs text-decoration-none p-2'>{category}</a>
                         </li>
                     )}
                 </ul>
                 <Col xs={6}>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="search..." />
-                    <button class="btn btn-warning" type="button" id="button-addon2">Tìm Kiếm</button>
-                </div>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" placeholder="search..." />
+                        <button className="btn btn-warning" type="button" id="button-addon2">Tìm Kiếm</button>
+                    </div>
                 </Col>
                 <Row>
-                    {products.map((product, index) =>
+                    {productList.map((product, index) =>
 
                         <Col md={3} key={index}>
                             <div className='border border-primary mb-3'>
@@ -74,7 +84,6 @@ export default function ProductPage() {
                                         className='p-2'
                                     />
                                     <CardContent>
-
                                         <Typography gutterBottom variant="h5" component="div">
                                             {product.name}
                                         </Typography>
@@ -87,10 +96,12 @@ export default function ProductPage() {
                                             Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         </Typography>
                                     </CardContent>
-                                    <CardActions>
-                                        <Button size='small' variant="contained" color="success">Buy</Button>
-                                        <Button size='small' variant="contained" color="info">Learn more</Button>
-                                    </CardActions>
+                                    <div className='d-flex justify-content-center'>
+                                        <CardActions>
+                                            <Button size='small' variant="contained" color="success">Buy</Button>
+                                            <Link to={`/product-detail/${product.id}`} className='ms-2'><Button size='small' variant="contained" color="info">Learn more</Button></Link>
+                                        </CardActions>
+                                    </div>
                                 </Card>
                             </div>
                         </Col>

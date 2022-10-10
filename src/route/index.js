@@ -16,10 +16,10 @@ import UpdatePage from '../layout/UpdatePage';
 export const publicRoutes = [
   { path: '/', component: HomePage },
   { path: '/products', component: ProductPage },
-  { path: '/product-detail', component: DetailProduct },
+  { path: '/product-detail/:id', component: DetailProduct },
   { path: '/carts', component:Carts },
-  { path: '/signin', component: SignIn },
-  { path: '/signup', component: SignUp },
+  { path: '/sign-in', component: SignIn },
+  { path: '/sign-up', component: SignUp },
   { path: '/admin/product-list', component: ProductList },
   { path: '/admin/users', component: Users },
   { path: '/admin/trash', component: Trash },

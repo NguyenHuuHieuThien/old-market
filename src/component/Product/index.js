@@ -156,7 +156,7 @@ export default function Products() {
                                             <span>100% cotton</span>
                                             <span className="text-primary"> • </span>
                                             <span>Light weight</span>
-                                            <span classNAme="text-primary"> • </span>
+                                            <span className="text-primary"> • </span>
                                             <span>
                                                 Best finish
                                                 <br />
