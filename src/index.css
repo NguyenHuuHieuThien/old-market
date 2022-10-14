@@ -150,6 +150,8 @@ input:focus{
   border-radius: 50%;
 }
 
+
+
 @import url(bootstrap.cosmo.css);
 @tailwind base;
 @tailwind components;

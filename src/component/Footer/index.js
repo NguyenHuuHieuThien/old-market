@@ -129,11 +129,11 @@ export default function Footer() {
         <div className="row pt-5 pb-5 border-bottom border-primary">
           <div
             className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pb-5 text-center text-sm-center text-md-center text-lg-start text-xl-start">
-            <div className="mb-4">
+            <div className="mb-4 d-flex d-sm-flex d-md-flex d-lg-block d-xl-block justify-content-center">
               <img src="https://static.chotot.com/storage/marketplace/transparent_logo.png" alt="" />
             </div>
-            <div className='w-50 text-center'>
-              <span className="text-white w-100">
+            <div className=''>
+              <span className="text-white form-text fst-italic  text-center w-100">
                 "Nơi cung cấp các mặt hàng được sử dụng phổ biến trong cuộc sống của sinh viên"
               </span>
             </div>

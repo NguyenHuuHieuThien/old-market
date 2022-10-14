@@ -1,5 +1,6 @@
 import ImageGallery from 'react-image-gallery';
 import { Row, Col } from 'react-bootstrap'
+import { useState } from 'react';
 
 import Navbars from "../../component/Navbars"
 import Footer from "../../component/Footer"
@@ -26,6 +27,7 @@ const images = [
 export default function DetailProduct() {
     let provinces = Object.values(province);
     console.log(provinces);
+    let [amount, setAmount] = useState(1);
     let { id } = useParams();
     console.log(id);
     return (
@@ -53,9 +55,9 @@ export default function DetailProduct() {
                         <div className='mb-4 d-flex'>
                             <div className='me-5'>Số lượng</div>
                             <div>
-                                <FontAwesomeIcon icon={faCircleMinus} />
-                                <input type="number" className='w-25 text-center' value='1' />
-                                <FontAwesomeIcon icon={faCirclePlus} />
+                                <FontAwesomeIcon icon={faCircleMinus} role='button' onClick={()=> setAmount(amount - 1)} />
+                                <input type="number" value = {amount} className='w-25 text-center' />
+                                <FontAwesomeIcon icon={faCirclePlus} role='button' onClick={()=> setAmount(amount + 1)} />
                             </div>
                             <div className='form-text'>8384 Số lượng có sẵn</div>
                         </div>

@@ -11,6 +11,7 @@ import Trash from '../layout/Admin/trash';
 import ProfilePage from '../layout/Profile';
 import UpdatePage from '../layout/UpdatePage';
 import AddproductPage from '../layout/AddProduct';
+import About from '../layout/About';
 
 
 //Public Routes
@@ -27,6 +28,7 @@ export const publicRoutes = [
   { path: '/admin/trash', component: Trash },
   { path: '/profile', component: ProfilePage },
   { path: '/update/:id', component: UpdatePage },
+  { path: '/about', component: About },
 ];
 
 export const privateRoutes = [];
