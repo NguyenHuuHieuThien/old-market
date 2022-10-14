@@ -1,12 +1,12 @@
 import SimpleImageSlider from "react-simple-image-slider";
 const images = [
-    { url: "https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg" },
-    { url: "https://i.ytimg.com/vi/ErLlyQsrYTo/maxresdefault.jpg" },
-    { url: "https://image.thanhnien.vn/w660/Uploaded/2022/zxaijr/2020_11_24/langdienhadanhtiengdailau10_fksa.png" },
-    { url: "https://ilikestatic.s3.ap-southeast-1.amazonaws.com/ilike_static/uploads/2018/04/phim-hoa-ngu-co-trang-2015-hoa-thien-cot-1.jpg" },
-    { url: "https://ik.imagekit.io/tvlk/blog/2022/07/phim-co-trang-trung-quoc-1-1024x576.jpg?tr=dpr-2,w-675" },
-    { url: "https://toplist.vn/images/800px/thinh-tuyet-lau-634994.jpg" },
-    { url: "https://static.mservice.io/blogscontents/momo-upload-api-210822202852-637652609325088623.jpg" },
+    { url: "https://freemar.vn/blog/wp-content/uploads/2021/09/mobile-top-banner-moneysite-scaled.jpg" },
+    { url: "https://tamquoc94.vn/kich-thuoc-banner-chuan/imager_3325.jpg" },
+    { url: "https://cdn.tgdd.vn/Files/2021/05/16/1352049/trai-nghiem-san-khuyen-mai-tren-giao-dien-website-.png" },
+    { url: "https://cdn.tgdd.vn/Files/2017/08/24/1015732/online-friday-760-367.png" },
+    { url: "https://cdn.tgdd.vn/Files/2018/06/27/1097831/tung-bung-uu-dai-combo-dien-tu--dien-lanh-giam-tu-3--10-.png" },
+    { url: "https://cdn.tgdd.vn/Files/2016/08/31/881752/quoc-khanh-2-9-760-3671.jpg" },
+    { url: "https://cdn.tgdd.vn/Files/2018/12/28/1141041/sam-tet-ruoc-loc-mung-nam-moi-2019-vo-van-uu-dai-hap-dan-tai-dien-may-xanh-760x367.png" },
 ];
 export default function SlideShow() {
     return (
@@ -18,6 +18,7 @@ export default function SlideShow() {
                 showBullets={true}
                 showNavs={true}
                 autoPlay={true}
+                style={{ backgroundPosition: "center", backgroundSize: "cover" }}
             />
         </div>
     )

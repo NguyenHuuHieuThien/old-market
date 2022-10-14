@@ -10,11 +10,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { MDBInput } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import { useState } from 'react'
 
 
 import Navbars from "../../component/Navbars"
 import Footer from "../../component/Footer"
 import Pagination from '../../component/Pagination';
+import Spinners from '../../component/Spinners';
 const categories = [
     'table',
     'motobike',
@@ -35,21 +37,24 @@ const categories = [
 export default function ProductPage() {
     const products = [
         { id: 1, name: 'Table', group: 'table', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a table' },
-        { id: 2,name: 'Motobike', group: 'motobike', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a motobike' },
+        { id: 2, name: 'Motobike', group: 'motobike', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a motobike' },
         { id: 3, name: 'Chair', group: 'chair', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a chair' },
         { id: 4, name: 'Cabinet', group: 'cabinet', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a cabinet' },
-        { id: 5,name: 'Bed', group: 'bed', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
-        { id: 6,name: 'Desk', group: 'table', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
+        { id: 5, name: 'Bed', group: 'bed', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
+        { id: 6, name: 'Desk', group: 'table', price: 100, image: 'https://cdn.popsww.com/blog/sites/2/2021/11/top-phim-co-trang-trung-quoc-moi.jpg', description: 'this is a bed' },
 
     ]
 
-    const [ productList, setProductList] = React.useState(products);
+    const [productList, setProductList] = useState(products);
+    const [isLoading, setIsLoading] = useState(false);
 
     console.log(productList);
     const selectCategory = (category) => {
+        setIsLoading(true);
         setProductList(products.filter((product) => product.group === category));
         // let categorySelect = productList.filter(item => item.group === category)
         // setProductList(categorySelect)
+        setIsLoading(false);
     }
     return (
         <div>
@@ -64,12 +69,14 @@ export default function ProductPage() {
                         </li>
                     )}
                 </ul>
-                <Col xs={6}>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" placeholder="search..." />
-                        <button className="btn btn-warning" type="button" id="button-addon2">Tìm Kiếm</button>
-                    </div>
-                </Col>
+                <Row>
+                    <Col xs={6}>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" placeholder="search..." />
+                            <button className="btn btn-warning" type="button" id="button-addon2">Tìm Kiếm</button>
+                        </div>
+                    </Col>
+                </Row>
                 <Row>
                     {productList.map((product, index) =>
 

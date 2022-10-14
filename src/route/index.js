@@ -1,5 +1,5 @@
 
-import  HomePage  from '../layout/Home';
+import HomePage  from '../layout/Home';
 import ProductPage from '../layout/Product';
 import DetailProduct from '../layout/DetailProduct';
 import Carts from '../layout/Carts';
@@ -10,6 +10,7 @@ import Users from '../layout/Admin/UserList';
 import Trash from '../layout/Admin/trash';
 import ProfilePage from '../layout/Profile';
 import UpdatePage from '../layout/UpdatePage';
+import AddproductPage from '../layout/AddProduct';
 
 
 //Public Routes
@@ -21,6 +22,7 @@ export const publicRoutes = [
   { path: '/sign-in', component: SignIn },
   { path: '/sign-up', component: SignUp },
   { path: '/admin/product-list', component: ProductList },
+  { path: '/product-add', component: AddproductPage },
   { path: '/admin/users', component: Users },
   { path: '/admin/trash', component: Trash },
   { path: '/profile', component: ProfilePage },

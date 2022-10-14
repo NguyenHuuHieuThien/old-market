@@ -35,6 +35,14 @@ body {
 .bg-btn{
   background-color:#16a085!important;
 }
+
+.bg-grdient{
+  background: linear-gradient( 67.33deg, #16a085 7.92%, #27ae60, #2ecc71 ) !important;
+}
+
+.bg-footer{
+  background: #273140
+}
 /*  */
 
 /* input css */
@@ -124,9 +132,13 @@ input:focus{
   padding: 0 12px 15px;
 }
 
-.bg-grdient{
-  background: linear-gradient( 67.33deg, #16a085 7.92%, #27ae60, #2ecc71 ) !important;
+
+
+/* text */
+.text-hover:hover{
+  color: #c2185b !important;
 }
+
 .border-main{
   border: 1px solid #2ecc71 !important;
 }

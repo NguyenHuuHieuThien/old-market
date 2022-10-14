@@ -1,8 +1,25 @@
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faHome, faUser, faBagShopping, faBell, faArrowRightToBracket, faCartShopping, faPenToSquare, faSearch, faEdit } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faHome, faUser, faBagShopping, faBell, faArrowRightToBracket, faCartShopping, faPenToSquare, faSearch, faEdit, faUserPlus } from "@fortawesome/free-solid-svg-icons"
 import { Dropdown } from "react-bootstrap"
+import {
+    MDBContainer,
+    MDBNavbar,
+    MDBNavbarBrand,
+    MDBNavbarToggler,
+    MDBIcon,
+    MDBNavbarNav,
+    MDBNavbarItem,
+    MDBNavbarLink,
+    MDBBtn,
+    MDBDropdown,
+    MDBDropdownToggle,
+    MDBDropdownMenu,
+    MDBDropdownItem,
+    MDBCollapse,
+} from 'mdb-react-ui-kit';
 export default function Navbars() {
+    const isUser = false;
     const menu = {
         menu1: [
             {
@@ -23,6 +40,12 @@ export default function Navbars() {
                 icon: faBell
 
             },
+            {
+                name: "Giỏ hàng",
+                link: "/carts",
+                icon: faCartShopping
+
+            },
         ],
         menu2: [
             {
@@ -34,7 +57,7 @@ export default function Navbars() {
             {
                 name: "Đăng ký",
                 link: "/sign-in",
-                icon: faArrowRightToBracket
+                icon: faUserPlus
 
             },
         ],
@@ -69,21 +92,49 @@ export default function Navbars() {
                     <div className="d-flex pt-3 pb-3 justify-content-between">
                         <ul className="d-flex m-0 p-0  justify-content-between text-white">
                             {menu.menu1.map((item, index) => (
-                                <Link key={index} to={item.link} className=" text-decoration-none">
-                                    <li className="me-2 px-2 cursor-pointer text-left">
-                                        <span className="text-left text-white"><FontAwesomeIcon icon={item.icon} className="me-2 fs-6" />{item.name}</span>
-                                    </li>
-                                </Link>
+                                <>
+                                    {item.name === "Thông báo" ? (
+                                        <li className="nav-item" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+                                            <FontAwesomeIcon icon={item.icon} />
+                                            {item.name}
+                                        </li>
+                                    ) : (
+
+                                        <Link key={index} to={item.link} className=" text-decoration-none">
+                                            <li className="me-2 px-2 cursor-pointer text-left">
+                                                <span className="text-left text-white"><FontAwesomeIcon icon={item.icon} className="me-2 fs-6" />{item.name}</span>
+                                            </li>
+                                        </Link>
+                                    )}
+                                </>
                             ))}
                         </ul>
                         <ul className="d-flex m-0 p-0">
-                            {menu.menu2.map((item, index) => (
+                            {!isUser ? menu.menu2.map((item, index) => (
                                 <Link key={index} to={item.link} className=" text-decoration-none">
                                     <li className="me-2 px-2 cursor-pointer text-left">
-                                        <span className="text-left text-white"><FontAwesomeIcon icon={item.icon} className="me-2 fs-6" />{item.name}</span>
+                                        <span className="text-left text-white fw-bold"><FontAwesomeIcon icon={item.icon} className="me-2 fs-6" />{item.name}</span>
                                     </li>
                                 </Link>
-                            ))}
+                            )) : (
+                                <MDBNavbarItem>
+                                    <MDBDropdown>
+                                        <MDBDropdownToggle tag='a' className='nav-link'>
+                                           <div className="d-flex justify-content-center align-items-center">
+                                           <div className="me-3">
+                                                <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src="https://assets.htv.com.vn/Images/TAP%20CHI%20HTV/Trao%20doi%20chuyen%20nhge/Thao/2019/Thang%204/4.4ChieuDao/Hinh%203%20CD.jpg" />
+                                            </div>
+                                            <div><span>userName</span></div>
+                                           </div>
+                                        </MDBDropdownToggle>
+                                        <MDBDropdownMenu>
+                                            <MDBDropdownItem link>Action</MDBDropdownItem>
+                                            <MDBDropdownItem link>Another action</MDBDropdownItem>
+                                            <MDBDropdownItem link>Something else here</MDBDropdownItem>
+                                        </MDBDropdownMenu>
+                                    </MDBDropdown>
+                                </MDBNavbarItem>
+                            )}
                         </ul>
                     </div>
                     <div className="row pb-3 pt-1">
