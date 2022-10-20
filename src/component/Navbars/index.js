@@ -76,17 +76,19 @@ export default function Navbars() {
         <div className="bg-main">
             <Navbar collapseOnSelect expand="lg" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Link to="/">
                         <img className="w-75 navbar-brand" src="https://static.chotot.com/storage/marketplace/transparent_logo.png" />
-                    </Navbar.Brand>
+                    </Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             {menu.menu1.map((item, index) => (
-                                <Nav.Link key={index} href={item.link}>
-                                    <FontAwesomeIcon icon={item.icon} />
-                                    <span className="ms-2">{item.name}</span>
-                                </Nav.Link>
+                                <Link key={index} to={item.link} style={{ textDecoration: 'none', color: 'white' }}>
+                                    <li className="me-5">
+                                        <FontAwesomeIcon icon={item.icon} />
+                                        <span className="ms-2">{item.name}</span>
+                                    </li>
+                                </Link>
                             ))}
                             {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -102,10 +104,12 @@ export default function Navbars() {
                         </Nav>
                         <Nav>
                             {menu.menu2.map((item, index) => (
-                                <Nav.Link key={index} href={item.link}>
-                                    <FontAwesomeIcon icon={item.icon} />
-                                    <span className="ms-2">{item.name}</span>
-                                </Nav.Link>
+                                <Link key={index} to={item.link} style={{ textDecoration: 'none', color: 'white' }}>
+                                    <li className="me-5">
+                                        <FontAwesomeIcon icon={item.icon} />
+                                        <span className="ms-2">{item.name}</span>
+                                    </li>
+                                </Link>
                             ))}
                         </Nav>
                     </Navbar.Collapse>

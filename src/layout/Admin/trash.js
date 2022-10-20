@@ -123,7 +123,7 @@ export default function Trash() {
                                 {Users.length > 0 ? Users.map((User, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
-                                        <td className="col-1"><img className="col-8 rounded-pill" src={User.avt} /></td>
+                                        <td className="col-1"><img className='avt' src={User.avt} /></td>
                                         <td>{User.name}</td>
                                         <td>{User.email}</td>
                                         <td>{User.phone}</td>
