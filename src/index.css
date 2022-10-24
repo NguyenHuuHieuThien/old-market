@@ -149,7 +149,9 @@ input:focus{
   height: 50px;
   border-radius: 50%;
 }
-
+.upload{
+  background-color: #e84a5f  
+  }
 
 
 @import url(bootstrap.cosmo.css);

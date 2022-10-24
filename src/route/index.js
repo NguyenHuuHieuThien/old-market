@@ -12,6 +12,7 @@ import ProfilePage from '../layout/Profile';
 import UpdatePage from '../layout/UpdatePage';
 import AddproductPage from '../layout/AddProduct';
 import About from '../layout/About';
+import Adduser from '../layout/Adduser';
 
 
 //Public Routes
@@ -29,6 +30,7 @@ export const publicRoutes = [
   { path: '/profile', component: ProfilePage },
   { path: '/update/:id', component: UpdatePage },
   { path: '/about', component: About },
+  { path: '/add-user', component: Adduser },
 ];
 
 export const privateRoutes = [];
