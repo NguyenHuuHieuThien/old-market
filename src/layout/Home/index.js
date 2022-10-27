@@ -4,8 +4,8 @@ import Products from "../../component/Product"
 import SlideShow from "../../component/SlideShow"
 export default function HomePage() {
     return (
-        <div>
-            <Navbars />
+        <div className="bg-main">
+            <Navbars position='sticky-top'/>
             <SlideShow/>
             <div className="container mt-4">
                 <Products />
