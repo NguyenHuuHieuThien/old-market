@@ -143,8 +143,16 @@ input:focus{
   color: #c2185b !important;
 }
 
+.text-main{
+  color: #e74c3c !important;
+}
+
 .border-main{
   border: 1px solid #2ecc71 !important;
+}
+
+.border-underline{
+  border-bottom: 3px solid #e74c3c !important;
 }
 
 /* avatar */
