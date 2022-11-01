@@ -9,7 +9,7 @@ import { Row, Col, Button, Form  } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTrash, faCheckDouble, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrash, faCheckDouble, faTrashCan, faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
 
@@ -18,9 +18,9 @@ import ModalReact from "../../component/Modal";
 import SideBars from "../../component/SideNav"
 
 const actions = [
-    { name: 'selectAll', icon: faCheckDouble, bg: 'success' },
-    { name: 'create', icon: faPlus, bg: 'primary' },
-    { name: 'delete', icon: faTrash, bg: 'danger' },
+    { name: 'Nạp lại', icon: faArrowsRotate, bg: 'success' },
+    { name: 'Tạo',link: '/add-user' ,icon: faPlus, bg: 'primary' },
+    { name: 'Xóa', icon: faTrash, bg: 'danger' },
 
 ]
 const Users = [
@@ -106,10 +106,7 @@ const checkId = (id) => {
                         <Col>
                             <div className="col-6 d-flex justify-content-start mb-2">
                                 {actions.map((action, index) => (
-                                    action.name === 'selectAll' ? 
-                                    <button role="button" onClick={selectAll} key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
-                                    <FontAwesomeIcon icon={action.icon} className="mr-0" /> {action.name}
-                                </button> : 
+                                    action.link? <Link to={action.link} key={index} className="btn btn-primary me-2"><FontAwesomeIcon icon={action.icon} /> {action.name}</Link>:
                                     <button role="button" key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
                                         <FontAwesomeIcon icon={action.icon} className="mr-0" /> {action.name}
                                     </button>
@@ -133,114 +130,10 @@ const checkId = (id) => {
                     </Col>
 
 
-                    <div className="mt-4 mr-5">
-                        {/* <Table striped bordered hover>
-                            <MDBTableHead>
-                                <tr>
-                                    <th scope='col'>Name</th>
-                                    <th scope='col'>Title</th>
-                                    <th scope='col'>Status</th>
-                                    <th scope='col'>Position</th>
-                                    <th scope='col'>Actions</th>
-                                </tr>
-                            </MDBTableHead>
-                            <MDBTableBody>
-                                <tr>
-                                    <td>
-                                        <div className='d-flex align-items-center'>
-                                            <img
-                                                src='https://mdbootstrap.com/img/new/avatars/8.jpg'
-                                                alt=''
-                                                style={{ width: '45px', height: '45px' }}
-                                                className='rounded-circle'
-                                            />
-                                            <div className='ms-3'>
-                                                <p className='fw-bold mb-1'>John Doe</p>
-                                                <p className='text-muted mb-0'>john.doe@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p className='fw-normal mb-1'>Software engineer</p>
-                                        <p className='text-muted mb-0'>IT department</p>
-                                    </td>
-                                    <td>
-                                        <MDBBadge color='success' pill>
-                                            Admin
-                                        </MDBBadge>
-                                    </td>
-                                    <td>Senior</td>
-                                    <td>
-                                        <button type="button" className="btn btn-outline-info me-2">Sửa</button>
-                                        <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className='d-flex align-items-center'>
-                                            <img
-                                                src='https://mdbootstrap.com/img/new/avatars/6.jpg'
-                                                alt=''
-                                                style={{ width: '45px', height: '45px' }}
-                                                className='rounded-circle'
-                                            />
-                                            <div className='ms-3'>
-                                                <p className='fw-bold mb-1'>Alex Ray</p>
-                                                <p className='text-muted mb-0'>alex.ray@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p className='fw-normal mb-1'>Consultant</p>
-                                        <p className='text-muted mb-0'>Finance</p>
-                                    </td>
-                                    <td>
-                                        <MDBBadge color='primary' pill>
-                                            Onboarding
-                                        </MDBBadge>
-                                    </td>
-                                    <td>Junior</td>
-                                    <td>
-                                        <button type="button" className="btn btn-outline-info me-2">Sửa</button>
-                                        <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className='d-flex align-items-center'>
-                                            <img
-                                                src='https://mdbootstrap.com/img/new/avatars/7.jpg'
-                                                alt=''
-                                                style={{ width: '45px', height: '45px' }}
-                                                className='rounded-circle'
-                                            />
-                                            <div className='ms-3'>
-                                                <p className='fw-bold mb-1'>Kate Hunington</p>
-                                                <p className='text-muted mb-0'>kate.hunington@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p className='fw-normal mb-1'>Designer</p>
-                                        <p className='text-muted mb-0'>UI/UX</p>
-                                    </td>
-                                    <td>
-                                        <MDBBadge color='warning' pill>
-                                            Awaiting
-                                        </MDBBadge>
-                                    </td>
-                                    <td>Senior</td>
-                                    <td>
-                                        <button type="button" className="btn btn-outline-info me-2">Sửa</button>
-                                        <button type="button" className="btn btn-outline-danger" onClick={handleShow}>Xóa</button>
-                                    </td>
-                                </tr>
-                            </MDBTableBody>
-                        </Table> */}
-                        <Table striped bordered hover>
+                    <div className="mt-4 mr-5 bg-white rounded-2">
+                        <Table>
                             <thead>
-                                <tr>
-                                    <th></th>
+                                <tr className='bg-gray'>
                                     <th>STT</th>
                                     <th>Avatar</th>
                                     <th>Tên</th>
@@ -254,7 +147,6 @@ const checkId = (id) => {
                             <tbody>
                                 {users.length > 0 ? users.map((user, index) => (
                                     <tr key={index}>
-                                        <td><Form.Check aria-label="option 1" role="button" onClick={()=> checkId(user.id)}/></td>
                                         <td>{index + 1}</td>
                                         <td className='col-1'><img style={{width: '50px', height:'50px', borderRadius: '50%'}} src={user.avt} /></td>
                                         <td>{user.name}</td>
@@ -267,11 +159,11 @@ const checkId = (id) => {
                                             </MDBBadge>
                                         </td>
                                         <td>
-                                            <button type="button" className="btn btn-info me-2"><Link style={{textDecoration: 'none', color:'white'}} to={`/update/${user.id}`}>Update</Link></button>
-                                            <button type="button" className="btn btn-danger" onClick={()=>handleShow(user.id)}>Delete</button>
+                                            <button type="button" className="btn btn-info me-2"><Link style={{textDecoration: 'none', color:'white'}} to={`/update/${user.id}`}>Cập nhật</Link></button>
+                                            <button type="button" className="btn btn-danger" onClick={()=>handleShow(user.id)}>Xóa</button>
                                         </td>
                                     </tr>
-                                )) : <tr ><td colSpan="8">No user.<Link to='/signup'>Create new user</Link></td></tr>}
+                                )) : <tr ><td colSpan="8">Chưa có người dùng nào.<Link to='/sign-up'>Tạo mới một người dùng</Link></td></tr>}
 
                             </tbody>
                         </Table>
