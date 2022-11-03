@@ -124,7 +124,7 @@ export default function Footer() {
     //     </a>
     //   </div>
     // </MDBFooter>
-    <div id="footer" className="mt-5 bg-footer">
+    <div id="footer" className="bg-footer">
       <div className="container">
         <div className="row pt-5 pb-5 border-bottom border-primary">
           <div

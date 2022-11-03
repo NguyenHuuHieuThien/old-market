@@ -91,11 +91,10 @@ export default function ProductPage() {
     //     setPage(page)
     // }, [])
     return (
-        <div>
+        <div className='bg-main'>
             <Navbars />
-            <div className='container'>
-
-                <h1 className='text-uppercase me-5'>Products</h1>
+            <div className='container mt-5 bg-white mb-5 shadow-sm p-3 rounded-3'>
+                <h1 className='text-uppercase me-5 mb-5 sticky-top border-underline w-100 py-3 bg-white'>Products</h1>
                 <ul className='d-flex list-unstyled gap-2 mt-3'>
                     {categories.map((category, index) =>
                         <li key={index} onClick={() => selectCategory(category)} className='border border-primary ' role="button">
@@ -105,7 +104,7 @@ export default function ProductPage() {
                 </ul>
                 <Row>
                     <Col xs={6}>
-                        <div className="input-group mb-3">
+                        <div className="input-group  mb-3">
                             <input type="text" className="form-control" placeholder="search..." />
                             <button className="btn btn-warning" type="button" id="button-addon2">Tìm Kiếm</button>
                         </div>

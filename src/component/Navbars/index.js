@@ -91,7 +91,7 @@ export default function Navbars({ position }) {
     return (
         <div>
 
-            <div className={`${position} ${offset && offset >= 80 ? 'bg-nav' : 'bg-transparent'}`} id="navbar-bg">
+            <div className="bg-nav shadow-sm" id="navbar-bg">
                 <Navbar collapseOnSelect expand="lg" variant="dark">
                     <Container>
                         <Link to="/">
@@ -148,51 +148,7 @@ export default function Navbars({ position }) {
                     <li></li>
                 </ul>
             </div> */}
-            <div className="bg-main ">
-                <div className="container ">
-                    <div className="mt-5 pt-5">
-                        <h1 className="text-white animate__animated animate__bounceInDown">Chợ tốt Online</h1>
-                    </div>
-                    <div className="d-flex justify-content-center mt-5">
-                        <div className="d-flex p-1 border border-white w-75">
-                            <div className="border w-75">
-                                <input type="text" className="w-100 h-100 border-0 outline-none p-2 z-index" />
-                            </div>
-                            <button onClick={() => console.log(123)} className="btn btn-warning w-25">Tìm kiếm</button>
-                        </div>
-                    </div>
-                    <div className="d-flex justify-content-between mt-5">
-                        <div className="col-4 mt-5">
-                            <div className="animate__animated animate__fadeInLeft w-100">
-                                <img src="https://subiz.com.vn/blog/wp-content/uploads/2015/12/Card-DanangShip-01-e1450144113271.png" />
-                            </div>
-                            <div className="text-white">
-                                <div>Tiết kiệm thời gian</div>
-                                <div>Mua sắm mọi nơi, mọi lúc</div>
-                            </div>
-                        </div>
-                        <div className="col-4 mt-5">
-                            <div className="animate__animated animate__fadeInUp text-center w-50">
-                                <img src="https://cdn-icons-png.flaticon.com/512/602/602251.png" width='100%' />
-                            </div>
-                            <div className="text-white">
-                                <div>Giao hàng tận nhà</div>
-                                <div>Nhận được hàng từ 3-5 ngày</div>
-                            </div>
-                        </div>
-                        <div className="col-4 mt-5">
-                            <div className="animate__animated animate__fadeInRight w-50 d-flex justify-content-end">
-                                <img className="" src="https://tamlytrilieunhc.com/wp-content/uploads/2021/07/thanh-toan-khi-nhan-hang.png" width='100%' />
-                            </div>
-                            <div className="text-white">
-                                <div>Thanh toán khi nhận hàng</div>
-                                <div>Kiểm tra hàng trước khi thanh toán</div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
         </div>
 
     )

@@ -12,7 +12,7 @@ export default function SlideShow() {
     return (
         <div>
             <SimpleImageSlider
-                width="100%"
+                width="66%"
                 height={300}
                 images={images}
                 showBullets={true}

@@ -24,10 +24,9 @@ body {
   margin: 0;
 }
 /* background */
-/* .bg-main{
-  background-color:#ee5253!important;
-  height: 100vh;
-} */
+.bg-main{
+  background-color:#f5f5f5!important;
+}
 .bg-nav{
   background-color: #273140;
 }
@@ -276,7 +275,12 @@ input:focus{
   animation-duration: 11s;
 }
 
-
+.position{
+  position: relative;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
 
 @keyframes animate {
 

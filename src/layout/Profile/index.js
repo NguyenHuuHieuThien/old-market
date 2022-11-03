@@ -19,6 +19,7 @@ import { faPenToSquare, faChevronRight, faBell, faCartShopping, faHome, faUser, 
 import { Link } from 'react-router-dom';
 import { Collapse } from 'react-bootstrap';
 
+import ModalReact from '../../component/Modal';
 import Navbars from '../../component/Navbars';
 import Footer from '../../component/Footer';
 import MyCollapse from '../../component/Collapse';
@@ -33,13 +34,35 @@ const profileMenu = [
 ]
 export default function ProfilePage() {
     const [open, setOpen] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
 
     return (
         <>
-            <section>
-                <div className='row mt-3'>
-                    <div className='col-2 bg-white rounded-2 p-0 ms-5'>
-                        <div className='w-100 sticky-top '>
+            <section className='bg-main'>
+                <ModalReact children={
+                <div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="password" id="currentPass" />
+                        <label for="currentPass">Mật khẩu hiện tại</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="password" id="newPass" />
+                        <label for="newPass">Mật khẩu mới</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="password" id="checkNewPass" />
+                        <label for="checkNewPass">Nhập lại mật khẩu</label>
+                    </div>
+                </div>}
+                    handleClose={handleClose}
+                    show={show}
+                    title="Đổi mật khẩu">
+
+                </ModalReact>
+                <div className='row'>
+                    <div className='col-2 mt-3 bg-white sticky-top rounded-2 mb-3 ms-5 shadow-sm' style={{height: '100vh'}}>
+                        <div className='w-100 '>
                             <div className='py-1 ps-3 mb-3'>
                                 {profileMenu.map((item, index) => {
                                     return (
@@ -54,16 +77,16 @@ export default function ProfilePage() {
                             </div>
                         </div>
                     </div>
-                    <div className='col-9 p-0'>
+                    <div className='col-9  mt-3 p-0'>
                         <MDBContainer className="ms-2">
                             <MDBRow>
                                 <MDBCol>
 
-                                    <div className='d-flex justify-content-between bg-white p-3 rounded-3 mb-3'>
+                                    <div className='d-flex justify-content-between bg-white p-3 rounded-3 mb-3 shadow-sm'>
                                         <div>
-                                            <Link to="product-add"><button className='btn btn-primary me-2'>Đăng bài</button></Link>
+                                            <Link to="product-add"><button className='btn btn-primary me-2'>Đăng tin</button></Link>
                                             <Link to="/user/update/1"><button className='btn btn-success me-2'>Sửa profile</button></Link>
-                                            <button className='btn btn-info me-2'>Đổi mật khẩu</button>
+                                            <button className='btn btn-info me-2' onClick={() => setShow(true)}>Đổi mật khẩu</button>
                                         </div>
                                         <button className='btn btn-danger rounded-5'>Đăng xuất</button>
                                     </div>
@@ -74,7 +97,7 @@ export default function ProfilePage() {
                             <MDBRow>
                                 <MDBCol lg="4">
                                     <MDBCard className="mb-4">
-                                        <MDBCardBody className="text-center">
+                                        <MDBCardBody className="text-center shadow-sm" >
                                             <div className='d-flex justify-content-center'>
                                                 <MDBCardImage
                                                     src="https://cdnmedia.tinmoi.vn/upload/thanhxuanbtv/2021/08/06/luu-thi-thi-de-toc-ngan-khien-cnet-chan-dong-vi-kem-sac-va-tam-thuong-1628219036-3.jpg"
@@ -96,7 +119,7 @@ export default function ProfilePage() {
                                 </MDBCol>
                                 <MDBCol lg="8">
                                     <MDBCard className="mb-4">
-                                        <MDBCardBody>
+                                        <MDBCardBody className='shadow-sm'>
                                             <MDBRow>
                                                 <MDBCol sm="3">
                                                     <MDBCardText>Họ tên</MDBCardText>
@@ -190,8 +213,8 @@ export default function ProfilePage() {
                                 </MDBCol>
                             </MDBRow>
                             <div>
-                                <div className='bg-white rounded-2'>
-                                <h3 className='py-3 border-underline'>Lịch sử mua hàng</h3>
+                                <div className='bg-white rounded-2 shadow-sm'>
+                                    <h3 className='py-3 border-underline'>Lịch sử mua hàng</h3>
                                     <MDBTable>
                                         <MDBTableHead>
                                             <tr>
@@ -208,17 +231,8 @@ export default function ProfilePage() {
                                                 <td>Otto</td>
                                                 <td>@mdo</td>
                                             </tr>
-                                            <tr>
-                                                <th scope='row'>2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope='row'>3</th>
-                                                <td colSpan={2}>Larry the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
+
+
                                         </MDBTableBody>
                                     </MDBTable>
                                 </div>

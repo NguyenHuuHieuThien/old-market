@@ -67,7 +67,7 @@ export default function ProductList() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <div>
+        <div className="bg-main">
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -92,37 +92,30 @@ export default function ProductList() {
                     <SideBars/>
                 </Col>
                 <Col md={8}>
-
-                    <h1 className="text-center mt-4 text-uppercase">Product List</h1>
-                    <Row>
-                        <Col>
-                            <div className="col-6 d-flex justify-content-start mb-2">
-                                {actions.map((action, index) => (
-                                    action.name === 'trash' ?
-                                        <button role="button" key={index} className={`border-0 me-2 py-1 text-white bg-${action.bg}`}>
-                                            <FontAwesomeIcon icon={action.icon} className="mr-2" /> {action.name}
-                                        </button>
-
-                                        :
-                                        <button role="button" key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
-                                            <FontAwesomeIcon icon={action.icon} className="mr-2" /> {action.name}
-                                        </button>
-                                ))}
-
-
+                    <h1 className="text-center mb-5 mt-5  text-uppercase">Phê duyệt bài đăng</h1>
+                    <div className='bg-white rounded-3 shadow-sm'>
+                        <div className='row p-3'>
+                            <div className='col-8 d-flex align-items-center justify-content-between w-100'>
+                                <div className="col-6 d-flex">
+                                    {actions.map((action, index) => (
+                                            <button role="button" key={index} className={`border-0 me-1 py-1 text-white px-2 bg-${action.bg}`}>
+                                                <FontAwesomeIcon icon={action.icon} className="mr-0" /> {action.name}
+                                            </button>
+                                    ))}
+                                </div>
+                                <div className="col-6">
+                                    <MDBInputGroup className=' d-flex align-items-center'>
+                                        <input className='form-control' placeholder="Nhập điều kiện..." type='text' />
+                                        <MDBBtn outline>Tìm kiếm</MDBBtn>
+                                    </MDBInputGroup>
+                                </div>
                             </div>
-                        </Col>
-                        <Col xs={4}>
-                            <MDBInputGroup className='mb-3'>
-                                <input className='form-control' placeholder="Recipient's username" type='text' />
-                                <MDBBtn outline>Button</MDBBtn>
-                            </MDBInputGroup>
-                        </Col>
-                    </Row>
-                    <div className="mt-5 mr-5">
-                        <Table striped bordered hover>
+                        </div>
+                    </div>
+                    <div className="mt-3  bg-white rounded-3 shadow-sm">
+                        <Table>
                             <thead>
-                                <tr>
+                                <tr className='border-underline'>
                                     <th>Hình ảnh</th>
                                     <th>Tên</th>
                                     <th>Giá</th>
@@ -134,14 +127,14 @@ export default function ProductList() {
                             <tbody>
                                 {products.map((product, index) => (
                                     <tr key={index}>
-                                        <td className="col-1"><img src={product.image} alt="" width="100px" /></td>
+                                        <td className="col-1 p-3"><img src={product.image} alt="" width="100px" /></td>
                                         <td>{product.name}</td>
                                         <td>{product.price}</td>
                                         <td>{product.quantity}</td>
                                         <td>{product.date}</td>
                                         <td>
-                                            <button className="btn btn-success me-2">Confirm</button>
-                                            <button className="btn btn-danger">Remove</button>
+                                            <button className="btn btn-success me-2">Xác nhận</button>
+                                            <button className="btn btn-danger">Bỏ</button>
                                         </td>
                                     </tr>
                                 ))}
