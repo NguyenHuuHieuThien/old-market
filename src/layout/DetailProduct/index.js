@@ -7,24 +7,24 @@ import Footer from "../../component/Footer"
 import { useParams } from 'react-router-dom';
 import province from './../../Province/data.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTruck, faPlus, faCirclePlus, faCircleMinus, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTruck, faPlus, faCirclePlus, faCircleCheck, faCircleMinus, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 const images = [
     {
         original: 'https://picsum.photos/id/1018/1000/600/',
         thumbnail: 'https://picsum.photos/id/1018/250/150/',
     },
-    {
-        original: 'https://picsum.photos/id/1015/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    },
-    {
-        original: 'https://picsum.photos/id/1019/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
-    {
-        original: 'https://picsum.photos/id/1019/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    },
+    // {
+    //     original: 'https://picsum.photos/id/1015/1000/600/',
+    //     thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    // },
+    // {
+    //     original: 'https://picsum.photos/id/1019/1000/600/',
+    //     thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    // },
+    // {
+    //     original: 'https://picsum.photos/id/1019/1000/600/',
+    //     thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    // },
 ];
 
 
@@ -37,8 +37,8 @@ export default function DetailProduct() {
     return (
         <div>
             <div className='bg-main'>
-            <Navbars />
-                <div className='container shadow-sm bg-white p-3 mt-3 rounded-3 text-left'>
+                <Navbars />
+                <div className='container shadow-sm bg-white p-3 mt-3 rounded-3 text-start'>
                     <Row>
                         <Col md={6}>
                             <ImageGallery items={images} />
@@ -78,64 +78,87 @@ export default function DetailProduct() {
                     </Row>
                 </div>
                 <div className='container d-flex align-items-center bg-white shadow-sm p-3 rounded-3 mt-3 text-left'>
-                    <div className='row mt-5'>
-                        <div className='col-4'>
-                            <div className='d-flex justify-content-start align-items-center border-right border-danger'>
-                                <div className='me-3'>
-                                    <img className='rounded-full' src='https://yt3.ggpht.com/XkcR_0_hNSF1QSORprbltUR23RyOSfnCUBYo0BEUwvAZrV2UVuY3ltSa5BukufP4oQEQ5cKN=s900-c-k-c0x00ffffff-no-rj' width="80px" />
+                    <div className='col-4'>
+                        <div className='d-flex justify-content-start align-items-center border-right border-danger'>
+                            <div className='me-3'>
+                                <img className='rounded-full' src='https://yt3.ggpht.com/XkcR_0_hNSF1QSORprbltUR23RyOSfnCUBYo0BEUwvAZrV2UVuY3ltSa5BukufP4oQEQ5cKN=s900-c-k-c0x00ffffff-no-rj' width="80px" />
+                            </div>
+                            <div>
+                                <div>
+                                    thiennhh
                                 </div>
                                 <div>
-                                    <div>
-                                        thiennhh
-                                    </div>
-                                    <div>
-                                        Người bán
-                                    </div>
+                                    Người bán
                                 </div>
                             </div>
                         </div>
-                        <div className='col-8'>
-                            <div className='row'>
-                                <div className='col-4 mb-3'>
-                                    <div>
-                                        <span className='me-3'>Đánh giá</span>
-                                        <span className='text-main'>45,6k</span>
-                                    </div>
+                    </div>
+                    <div className='col-8'>
+                        <div className='row'>
+                            <div className='col-4 mb-3'>
+                                <div>
+                                    <span className='me-3'>Đánh giá</span>
+                                    <span className='text-main'>45,6k</span>
                                 </div>
-                                <div className='col-4 mb-3'>
-                                    <div>
-                                        <span className='me-3'>Đánh giá</span>
-                                        <span className='text-main'>45,6k</span>
-                                    </div>
+                            </div>
+                            <div className='col-4 mb-3'>
+                                <div>
+                                    <span className='me-3'>Đánh giá</span>
+                                    <span className='text-main'>45,6k</span>
                                 </div>
-                                <div className='col-4 mb-3'>
-                                    <div>
-                                        <span className='me-3'>Đánh giá</span>
-                                        <span className='text-main'>45,6k</span>
-                                    </div>
+                            </div>
+                            <div className='col-4 mb-3'>
+                                <div>
+                                    <span className='me-3'>Đánh giá</span>
+                                    <span className='text-main'>45,6k</span>
                                 </div>
-                                <div className='col-4 mb-3'>
-                                    <div>
-                                        <span className='me-3'>Đánh giá</span>
-                                        <span className='text-main'>45,6k</span>
-                                    </div>
+                            </div>
+                            <div className='col-4 mb-3'>
+                                <div>
+                                    <span className='me-3'>Đánh giá</span>
+                                    <span className='text-main'>45,6k</span>
                                 </div>
-                                <div className='col-4 mb-3'>
-                                    <div>
-                                        <span className='me-3'>Đánh giá</span>
-                                        <span className='text-main'>45,6k</span>
-                                    </div>
+                            </div>
+                            <div className='col-4 mb-3'>
+                                <div>
+                                    <span className='me-3'>Đánh giá</span>
+                                    <span className='text-main'>45,6k</span>
                                 </div>
-                           
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div className='container bg-white p-3 rounded-3 mt-3 mb-3 text-start'>
+                    <div className='mt-4 ms-3'>
+                        <h2 className='text-start mb-5'>Mô tả sản phẩm</h2>
+                        <div>
+                            <div className='mb-5'>
+                                <div>
+                                    Quần Âu Nam Dáng Ôm Công Sở Quần Tây Nam Vải Tuyết Mưa Co Giãn Nhẹ TILANO
+                                </div>
+                                <div className='mt-3'>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />chất liệu vải tuyết mưa dày dặn</div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />chất liệu mềm mịn ,thoáng mát thấm hút mồ hôi tốt</div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Thiết kế chi tiết ,tỉ mỉ từng chi tiết dù là nhỏ nhất.</div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Kiểu dáng slim trẻ trung ,ống đứng xếp li ôm dáng.</div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Có nhiều màu sắc cho bạn lựa chon: đen ,xanh than, xanh đen ,ghi sáng,.</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Cam kết chất lượng và mẫu mã sản phẩm giống với hình ảnh.</div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Hoàn tiền nếu sản phẩm không giống với mô tả. </div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Cam kết được đổi trả hàng trong vòng 7 ngày. </div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Chấp nhận đổi hàng khi size không vừa Giao hàng trên toàn quốc, </div>
+                                    <div className='mb-3'><FontAwesomeIcon icon={faCircleCheck} className="me-2 text-success" />Nhận hàng trả tiền Hỗ trợ đổi trả theo quy định của hệ thống.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='container bg-white p-3 rounded-3 mt-3 mb-3 text-left'>
-                    <div className='mt-4'>
-                        <h2 className='text-left'>Mô tả sản phẩm</h2>
-                    </div>
-                    <div>
+                <div className='container bg-white p-3 rounded-3 mt-3 mb-3 text-start'>
+                    <div className='mt-4 ms-3'>
                         <h2>Đánh giá sản phẩm</h2>
                         <div className='mt-5'>
                             <div className='d-flex'>
@@ -145,11 +168,78 @@ export default function DetailProduct() {
                                 <div>
                                     <div className='fw-bold'>Hua Khai</div>
                                     <div className='form-text'>2022-10-10 14:28 | Phân loại hàng: Tủ lạnh</div>
-                                    <div>
+                                    <div className='w-50'>
                                         <span>
                                             Chất lượng sản phẩm: đẹp, chất lượng tốt, giá cả hợp lý.
                                             Sản phẩm giống hình đóng gói cẩn thạn nhưmg mà sao lết nối đt mình thì chỉ nghe đc 1 bên còn đt khác vẫn nghe đc 2 bên
                                         </span>
+                                    </div>
+                                    <div className='d-flex'>
+                                        <a role="button" className='form-text me-3 text-decoration-none'>Thích</a>
+                                        <a role="button" className='form-text text-decoration-none'>Phản hồi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='mt-5'>
+                            <div className='d-flex'>
+                                <div className='me-3'>
+                                    <img className='avt' src='https://danviet.mediacdn.vn/296231569849192448/2021/6/28/huakhai4-1624835323234-1624835323406100909784.jpg' />
+                                </div>
+                                <div>
+                                    <div className='fw-bold'>Hua Khai</div>
+                                    <div className='form-text'>2022-10-10 14:28 | Phân loại hàng: Tủ lạnh</div>
+                                    <div className='w-50'>
+                                        <span>
+                                            Chất lượng sản phẩm: đẹp, chất lượng tốt, giá cả hợp lý.
+                                            Sản phẩm giống hình đóng gói cẩn thạn nhưmg mà sao lết nối đt mình thì chỉ nghe đc 1 bên còn đt khác vẫn nghe đc 2 bên
+                                        </span>
+                                    </div>
+                                    <div className='d-flex'>
+                                        <a role="button" className='form-text me-3 text-decoration-none'>Thích</a>
+                                        <a role="button" className='form-text text-decoration-none'>Phản hồi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='mt-5'>
+                            <div className='d-flex'>
+                                <div className='me-3'>
+                                    <img className='avt' src='https://danviet.mediacdn.vn/296231569849192448/2021/6/28/huakhai4-1624835323234-1624835323406100909784.jpg' />
+                                </div>
+                                <div>
+                                    <div className='fw-bold'>Hua Khai</div>
+                                    <div className='form-text'>2022-10-10 14:28 | Phân loại hàng: Tủ lạnh</div>
+                                    <div className='w-50'>
+                                        <span>
+                                            Chất lượng sản phẩm: đẹp, chất lượng tốt, giá cả hợp lý.
+                                            Sản phẩm giống hình đóng gói cẩn thạn nhưmg mà sao lết nối đt mình thì chỉ nghe đc 1 bên còn đt khác vẫn nghe đc 2 bên
+                                        </span>
+                                    </div>
+                                    <div className='d-flex'>
+                                        <a role="button" className='form-text me-3 text-decoration-none'>Thích</a>
+                                        <a role="button" className='form-text text-decoration-none'>Phản hồi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='mt-5'>
+                            <div className='d-flex'>
+                                <div className='me-3'>
+                                    <img className='avt' src='https://danviet.mediacdn.vn/296231569849192448/2021/6/28/huakhai4-1624835323234-1624835323406100909784.jpg' />
+                                </div>
+                                <div>
+                                    <div className='fw-bold'>Hua Khai</div>
+                                    <div className='form-text'>2022-10-10 14:28 | Phân loại hàng: Tủ lạnh</div>
+                                    <div className='w-50'>
+                                        <span>
+                                            Chất lượng sản phẩm: đẹp, chất lượng tốt, giá cả hợp lý.
+                                            Sản phẩm giống hình đóng gói cẩn thạn nhưmg mà sao lết nối đt mình thì chỉ nghe đc 1 bên còn đt khác vẫn nghe đc 2 bên
+                                        </span>
+                                    </div>
+                                    <div className='d-flex'>
+                                        <a role="button" className='form-text me-3 text-decoration-none'>Thích</a>
+                                        <a role="button" className='form-text text-decoration-none'>Phản hồi</a>
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +353,7 @@ export default function DetailProduct() {
                         </div>
                     </div>
                 </div>
-            <Footer/>
+                <Footer />
             </div>
         </div>
     )

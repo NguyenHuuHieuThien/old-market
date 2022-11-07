@@ -66,6 +66,7 @@ const Users = [
         badge: 'warning'
     },
 
+
 ]
 export default function UserList() {
     const [show, setShow] = useState(false);
@@ -94,12 +95,9 @@ export default function UserList() {
     }
 
     return (
-        <div className='bg-main'>
+        <div className='bg-main h-100'>
             <ModalReact show={show} handleClose={handleClose} deleteUser={deleteUser} handleShow={handleShow}>Do you want delete user?</ModalReact>
             <Row>
-                <Col md={2}>
-                    <SideBars />
-                </Col>
                 <Col md={8}>
                     <h1 className="mb-5 mt-5 text-center text-uppercase">Danh sách người dùng</h1>
                     <div className='bg-white rounded-3 shadow-sm'>

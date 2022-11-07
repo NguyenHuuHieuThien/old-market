@@ -6,6 +6,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from 'react'
+import React from 'react';
+import Tippy from '@tippyjs/react/headless';
 export default function Navbars({ position }) {
     const [offset, setOffset] = useState(0);
 
@@ -61,33 +63,6 @@ export default function Navbars({ position }) {
             },
         ],
     }
-    const [bg, setBg] = useState("bg-transparent");
-
-    // {
-    //     name: "Quản Lý",
-    //     icon: faBars,
-    //     more: [
-    //         {
-    //             name: "Bài viết",
-    //             link: "/",
-    //             icon: faUser
-
-    //         },
-
-    //         {
-    //             name: "Đăng tin",
-    //             link: "/",
-    //             icon: faEdit
-
-    //         },
-    //     ]
-
-    // },
-
-
-
-
-
     return (
         <div>
 
@@ -101,24 +76,70 @@ export default function Navbars({ position }) {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
                                 {menu.menu1.map((item, index) => (
-                                    <Link key={index} to={item.link} style={{ textDecoration: 'none', color: 'white' }}>
-                                        <li className="me-5">
+                                    item.name === "Thông báo" ?
+                                        <Tippy
+                                        interactive                    
+                                            render={attrs => (
+                                                <div className="box bg-white py-2 sticky-top shadow-sm rounded-2" style={{width:'350px'}} tabIndex="-1" {...attrs}>
+                                                    <ul className="p-0 text-start">
+                                                        <li role="button" className="mb-2 hover px-3 py-1">
+                                                            <div className="d-flex align-items-center justify-content-between">
+                                                                <div className="me-2">
+                                                                    <img src="https://yt3.ggpht.com/ytc/AMLnZu9iJXDiUSZ9az5rgL2JOIGSfRpZmjHSGQia6Ks5hA=s900-c-k-c0x00ffffff-no-rj" width="60px" height="60px"
+                                                                    className="rounded-5"/>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="fw-bold me-1" style={{fontSize: '14px'}}>Hiếu Thiên</span>
+                                                                    <span  style={{fontSize: '14px'}}>Đã bình luận về bài viết của bạn trên hệ thống</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li role="button" className="mb-2 hover px-3 py-1">
+                                                            <div className="d-flex align-items-center justify-content-between">
+                                                                <div className="me-2">
+                                                                    <img src="https://yt3.ggpht.com/ytc/AMLnZu9iJXDiUSZ9az5rgL2JOIGSfRpZmjHSGQia6Ks5hA=s900-c-k-c0x00ffffff-no-rj" width="60px" height="60px"
+                                                                    className="rounded-5"/>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="fw-bold me-1" style={{fontSize: '14px'}}>Hiếu Thiên</span>
+                                                                    <span  style={{fontSize: '14px'}}>Đã bình luận về bài viết của bạn trên hệ thống</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li role="button" className="hover px-3 py-1">
+                                                            <div className="d-flex align-items-center justify-content-between">
+                                                                <div className="me-2">
+                                                                    <img src="https://yt3.ggpht.com/ytc/AMLnZu9iJXDiUSZ9az5rgL2JOIGSfRpZmjHSGQia6Ks5hA=s900-c-k-c0x00ffffff-no-rj" width="60px" height="60px"
+                                                                    className="rounded-5"/>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="fw-bold me-1" style={{fontSize: '14px'}}>Hiếu Thiên</span>
+                                                                    <span  style={{fontSize: '14px'}}>Đã bình luận về bài viết của bạn trên hệ thống</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            )}>
+                                            <div className="me-2">
+                                                <FontAwesomeIcon icon={item.icon} className="text-white"/>
+                                                <span className="text-white ms-2">{item.name}</span>
+                                            </div>
+                                        </Tippy>
+                                        :
+                                        <Link
+                                            key={index}
+                                            to={item.link}
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "white",
+                                                marginRight: "10px",
+                                            }}
+                                        >
                                             <FontAwesomeIcon icon={item.icon} />
                                             <span className="ms-2">{item.name}</span>
-                                        </li>
-                                    </Link>
+                                        </Link>
                                 ))}
-                                {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Separated link
-                                </NavDropdown.Item>
-                            </NavDropdown> */}
                             </Nav>
                             <Nav>
                                 {menu.menu2.map((item, index) => (
@@ -134,22 +155,7 @@ export default function Navbars({ position }) {
                     </Container>
                 </Navbar>
             </div>
-            {/* <div className="">
-                <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div> */}
-
-        </div>
+        </div >
 
     )
 }

@@ -1,6 +1,6 @@
 import SimpleImageSlider from "react-simple-image-slider";
 const images = [
-    { url: "https://freemar.vn/blog/wp-content/uploads/2021/09/mobile-top-banner-moneysite-scaled.jpg" },
+    { url: "https://gotrangtri.vn/wp-content/uploads/2020/01/Banner-ban-hang-xuyen-tet-2.png" },
     { url: "https://tamquoc94.vn/kich-thuoc-banner-chuan/imager_3325.jpg" },
     { url: "https://cdn.tgdd.vn/Files/2021/05/16/1352049/trai-nghiem-san-khuyen-mai-tren-giao-dien-website-.png" },
     { url: "https://cdn.tgdd.vn/Files/2017/08/24/1015732/online-friday-760-367.png" },
@@ -13,7 +13,7 @@ export default function SlideShow() {
         <div>
             <SimpleImageSlider
                 width="66%"
-                height={300}
+                height={200}
                 images={images}
                 showBullets={true}
                 showNavs={true}
