@@ -5,119 +5,237 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import Navbars from "../../component/Navbars";
 import Footer from "../../component/Footer";
+import BgUser from "../../component/BgUser";
+import { Link,useParams,useNavigate  } from "react-router-dom";
 function Adduser() {
-
-    const [data, setData] = useState({
-        name: "",
-        email: "",
-        password: "",
-        phone: "",
-        address: "",
-        image: "",
+    let { id } = useParams();
+    const navigate = useNavigate();
+    let [data, setData] = useState({
+      username: "",
+      email: "",
+      fullName: "",
+      password: "",
+      phoneNumber: "",
+      address: "",
+      file: "",
+      sex: "",
+      birthday: "",
     });
-    const [avatar, setAvatar] = useState();
-
-    useEffect(()=>{
-        //clean up
-        return ()=>{
-           avatar && URL.revokeObjectURL(avatar.preview)
-        }
-
-    },[avatar])
-    const handle = e => {
-        let newData = { ...data }
+    console.log(data);
+    // let [loading, setLoading] = useState(false);
+    let [dataUpdate, setDataUpdate] = useState({});
+    // let location = useLocation();
+    //   let productPath = location.pathname.includes("product");
+    const handle = (e) => {
+      if (id) {
+        let newData = { ...dataUpdate };
         newData[e.target.id] = e.target.value;
-        if (e.target.id === "image") {
-            newData[e.target.id] = e.target.files[0];
-            let file = e.target.files[0];
-            file.preview = URL.createObjectURL(file);
-            setAvatar(file);
+        if (e.target.id === "files") {
+          newData[e.target.id] = e.target.files;
+        }
+        setDataUpdate(newData);
+      } else {
+        let newData = { ...data };
+        newData[e.target.id] = e.target.value;
+        if (e.target.id === "file") {
+          newData[e.target.id] = e.target.files[0];
         }
         setData(newData);
-        
-    }
-    const handleSubmit = async(e) => {
-        e.preventDefault(); 
+      }
+    };
+    const submit = (e) => {
+      e.preventDefault();
+  
+      if (id) {
+        axios
+          .put(`http://localhost:8080/product/update/${id}`, dataUpdate)
+          .then((res) => {
+            console.log("success");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        e.preventDefault();
         let formData = new FormData();
-        formData.append("name", data.name)
-        formData.append("email", data.email)
-        formData.append("password", data.password)
-        formData.append("phone", data.phone)
-        formData.append("address", data.address)
-        formData.append("file", data.image)
-        axios.post(`http://localhost:8080/user/insertUserFIle`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            }
-        }).then(res => {
-            console.log(res)
-        }).catch(error=>{
-            console.log(error)
-        })
-        
-    }
+        let publicData = id ? dataUpdate : data;
+        console.log(publicData);
+        formData.append("address", data.address);
+        formData.append("birthday", data.birthday);
+        formData.append("email", data.email);
+        formData.append("fullName", data.fullName);
+        formData.append("password", data.password);
+        formData.append("phoneNumber", data.phoneNumber);
+        formData.append("sex", data.sex);
+        formData.append("username", data.username);
+        formData.append("file", data.file);
+        axios
+          .post(`http://localhost:8080/user/insertUserFile`, formData, {})
+          .then((res) => {
+              alert("Tạo người dùng thành công");
+              navigate("/admin/users")
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    };
     
     return ( 
-        <div>
-            <Navbars />
-            <div className="container mt-5 mb-5">
-                <h1 className="mb-5">Thêm người dùng</h1>
-                <div>
-                    <form encType="multipart/form-data" onSubmit={handleSubmit}>
-                        <div className="row">
-                            <div className="col-4 pe-5">                             
-                                <div class="mb-3 text-center">
-                                    <div className="d-flex justify-content-center">
-                                    <div className="me-5 mb-5 d-flex justify-content-center align-items-center">
-                                        <img src={avatar? avatar.preview : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv8NfrKHYJHjf3FxKhrD9OEO17wd6YXGzfs_j3lDUFz7JsGQZR09IyyD9EVo6Z3jxH3MQ&usqp=CAU"} alt=""
-                                            style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
-                                    </div>
-                                    </div>
-                                    <div>
-                                        <label for="image" htmlFor="image" className="form-label upload p-2 px-3 text-white">
-                                            <FontAwesomeIcon icon={faPlus} className="me-2" />
-                                            Tải lên
-                                        </label>
-                                    </div>
-                                    <input type="file" onChange={e => handle(e)} className="form-control d-none" id="image" />
-                                </div>
-                               
-                                <button type="submit" className="btn btn-primary rounded-1 px-5 mt-3">Submit</button>
-
-                            </div>
-                            <div className="col-8 pe-5 text-start">
-                                <div class="mb-3">
-                                    <label for="name" className="form-label">Tên tài khoản</label>
-                                    <input type="text" onChange={e => handle(e)} className="form-control" id="name" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name" className="form-label">Họ và tên</label>
-                                    <input type="text" onChange={e => handle(e)} className="form-control" id="name" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" className="form-label">Email</label>
-                                    <input type="email" onChange={e => handle(e)} className="form-control" id="email" />
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="address" className="form-label">Địa chỉ</label>
-                                    <input type="text" onChange={e => handle(e)} className="form-control w-50" id="address" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" className="form-label">Mật khẩu</label>
-                                    <input type="password" onChange={e => handle(e)} className="form-control" id="password" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" className="form-label">Số điện thoại</label>
-                                    <input type="text" onChange={e => handle(e)} className="form-control w-50" id="phone" />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+        <BgUser>
+            <form onSubmit={(e) => submit(e)}>
+            <div className="px-5 py-3 text-start">
+              <h1 className="mb-5 mt-5">Thêm người dùng</h1>
+              <div className="row ">
+                <div className="col-12 co-sm-12 col-md-12 col-lg-6 col-xl-6 pe-5">
+                  <div class="mb-3">
+                    <label for="email" class="form-label fw-bold">
+                      Email
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="text"
+                      placeholder="Nhập email..."
+                      class="form-control text-white"
+                      id="email"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="username" class="form-label fw-bold">
+                      Tên Tài khoản
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="text"
+                      placeholder="Nhập tên tài khoản..."
+                      class="form-control text-white"
+                      id="username"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label fw-bold">
+                      Họ tên
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="text"
+                      placeholder="Nhập họ tên..."
+                      class="form-control text-white"
+                      id="fullName"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="sex" class="form-label fw-bold">
+                      Giới tính
+                    </label>
+                    <div className=" border border-main p-2">
+                      <div class="form-check form-check-inline me-3">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="sex"
+                          onChange={(e) => handle(e)}
+                          value="male"
+                        />
+                        <label class="form-check-label" for="male">
+                          Nam
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline me-3">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="sex"
+                          onChange={(e) => handle(e)}
+                          value="female"
+                        />
+                        <label class="form-check-label" for="female">
+                          Nữ
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="orther"
+                          value="3"
+                        />
+                        <label class="form-check-label" for="orther">
+                          Khác
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <div className="col-12 co-sm-12 col-md-12 col-lg-6 col-xl-6 ps-5">
+                  <div class="mb-3">
+                    <label for="address" class="form-label fw-bold">
+                      Địa chỉ
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="text"
+                      placeholder="Nhập địa chỉ..."
+                      class="form-control text-white"
+                      id="address"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="phoneNumber" class="form-label fw-bold">
+                      Số điện thoại
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="text"
+                      placeholder="Nhập số điện thoại.."
+                      class="form-control text-white"
+                      id="phoneNumber"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="birthday" class="form-label fw-bold">
+                      Ngày sinh
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="date"
+                      class="form-control text-white"
+                      id="birthday"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label fw-bold">
+                      Mật khẩu
+                    </label>
+                    <input
+                      onChange={(e) => handle(e)}
+                      type="text"
+                      placeholder="Nhập mật khẩu.."
+                      class="form-control text-white"
+                      id="password"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3 col-12">
+                    <input
+                      type="file"
+                      class="form-control"
+                      onChange={(e) => handle(e)}
+                      id="file"
+                    />
+                  </div>
+              <div className="mb-5 mt-5 col-12">
+                <button className="btn btn-danger rounded-1 py-2 w-100">
+                  Thêm
+                </button>
+              </div>
             </div>
-            <Footer />
-        </div>
+          </form>
+        </BgUser>
     
      );
 }

@@ -31,7 +31,7 @@ export default function Navbars({ position }) {
             },
             {
                 name: "Sản phẩm",
-                link: "/products",
+                link: "/product/list",
                 icon: faBagShopping
 
             },

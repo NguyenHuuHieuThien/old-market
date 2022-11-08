@@ -1,8 +1,9 @@
-import Navbars from "../../component/Navbars"
-import Footer from "../../component/Footer"
 import { useState } from "react"
 import axios from "axios"
 
+import Navbars from "../../component/Navbars"
+import Footer from "../../component/Footer"
+import BgUser from "../../component/BgUser"
 export default function AddproductPage() {
     const [data, setData] = useState({
         name: "",
@@ -10,26 +11,30 @@ export default function AddproductPage() {
         price: "",
         amount: "",
         description: "",
-        image: "",
+        files: "",
+        tradePark: "",
     })
-    const handleData = (e) => {
+    const handle = (e) => {
         let newData = { ...data }
         newData[e.target.id] = e.target.value;
-        if (e.target.id === "image") {
-            newData[e.target.id] = e.target.files[0];
+        if (e.target.id === "files") {
+            newData[e.target.id] = e.target.files;
         }
         setData(newData);
     }
 
-    const handleSubmit = (e) => {
+    const submit = (e) => {
         e.preventDefault();
         let formData = new FormData();
-        formData.append("name", data.name)
-        formData.append("category", data.category)
+        formData.append("productName", data.productName)
         formData.append("price", data.price)
-        formData.append("amount", data.amount)
         formData.append("description", data.description)
-        formData.append("image", data.image)
+        formData.append("tradePark", data.tradePark)
+        if (data && data.files.length > 0) {
+            for (let i = 0; i < data.files.length; i++) {
+                formData.append('files', data.files[i])
+            }
+        }
         axios.post(`http://localhost:3000/product/input/data`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -39,58 +44,91 @@ export default function AddproductPage() {
         })
     }
     return (
-        <div>
-            <Navbars />
-            <div className="container mt-5 mb-5">
-                <h1 className="mb-5">New Product</h1>
-                <div>
-                    <form onSubmit={e => handleSubmit(e)}>
-                        <div className="row">
-                            <div className="col-6">
-                                <div class="mb-3 row">
-                                    <label for="name" class=" col-sm-2 col-form-label">Name</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" onChange={e => handleData(e)} class="form-control" id="name" />
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="category" class="col-sm-2 col-form-label">Category</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" onChange={e => handleData(e)} class="form-control" id="category" />
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="price" class="col-sm-2 col-form-label">Price</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" onChange={e => handleData(e)} class="form-control w-50" id="price" />
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="amount" class="col-sm-2 col-form-label">Amount</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" onChange={e => handleData(e)} class="form-control w-50" id="amount" />
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="description" class="col-sm-2 col-form-label">Description</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" onChange={e => handleData(e)} id="description" rows={5}></textarea>
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="image" class="col-sm-2 col-form-label">Image</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" onChange={e => handleData(e)} class="form-control" id="image" accept="image/*" />
-                                    </div>
-                                </div>
+        <BgUser>
+            <form onSubmit={(e) => submit(e)}>
+                <div className="px-5 py-3 text-start">
+                    <h1 className="mb-5 mt-5">Đăng bán Sản phẩm</h1>
+                    <div className="row ">
+                        <div className="col-12 co-sm-12 col-md-12 col-lg-6 col-xl-6 pe-5">
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">
+                                    Tên sản phẩm
+                                </label>
+                                <input
+                                    onChange={(e) => handle(e)}
+                                    type="text"
+                                    placeholder="Nhập email..."
+                                    class="form-control text-white"
+                                    id="email"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label fw-bold">
+                                    Giá
+                                </label>
+                                <input
+                                    onChange={(e) => handle(e)}
+                                    type="number"
+                                    placeholder="Nhập giá..."
+                                    class="form-control text-white"
+                                    id="price"
+                                />
                             </div>
                         </div>
+                        <div className="col-12 co-sm-12 col-md-12 col-lg-6 col-xl-6 ps-5">
+                            <div className="row">
+                                <div className="col-6">
+                                    <div class="mb-3">
+                                        <label for="amount" class="form-label fw-bold">
+                                            Số lượng
+                                        </label>
+                                        <input
+                                            onChange={(e) => handle(e)}
+                                            type="text"
+                                            placeholder="Nhập số lượng..."
+                                            class="form-control text-white"
+                                            id="amount"
+                                        />
+                                    </div>
+                                </div>
 
-                        <button type="submit" class="btn btn-primary px-5 mt-3">Submit</button>
-                    </form>
+                                <div className="col-6">
+                                    <div class="mb-3">
+                                        <label for="tradePark" class="form-label fw-bold">
+                                            Trade Park
+                                        </label>
+                                        <input
+                                            onChange={(e) => handle(e)}
+                                            type="text"
+                                            placeholder="Nhập trade park..."
+                                            class="form-control text-white"
+                                            id="tradePark"
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mt-3">
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    onChange={(e) => handle(e)}
+                                    id="files"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-bold">Mô tả</label>
+                        <textarea class="form-control" placeholder="Nhập mô tả..." id="description" rows="3"></textarea>
+                    </div>
+                    <div className="mb-5 mt-5 col-12">
+                        <button className="btn btn-danger rounded-1 py-2 w-100">
+                            Thêm
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <Footer />
-        </div>
+            </form>
+        </BgUser>
     )
 }
