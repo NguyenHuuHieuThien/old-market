@@ -27,9 +27,9 @@ const profileMenu = [
     { name: 'Trang chủ', link: '/', icon: faHome },
     { name: 'Thông báo', link: '/', icon: faBell },
     { name: 'Giỏ hàng', link: '/carts', icon: faCartShopping },
-    { name: 'Profile', link: '/profile', icon: faUser },
+    { name: 'Profile', link: '/user/profile', icon: faUser },
     { name: 'Sản phẩm đã đăng', link: '/', icon: faList },
-    { name: 'Đăng bài', link: '/product-add', icon: faEdit },
+    { name: 'Đăng bài', link: '/product/add', icon: faEdit },
     { name: 'Đăng xuất', link: '/', icon: faRightFromBracket },
 ]
 export default function ProfilePage() {
@@ -63,11 +63,11 @@ export default function ProfilePage() {
                 <div className='row'>
                     <div className='col-2 mt-3 bg-white sticky-top rounded-2 mb-3 ms-5 shadow-sm' style={{height: '100vh'}}>
                         <div className='w-100 '>
-                            <div className='py-1 ps-3 mb-3'>
+                            <div className='py-1 mb-3'>
                                 {profileMenu.map((item, index) => {
                                     return (
-                                        <Link to={item.link} className="text-decoration-none text-black">
-                                            <div className='d-flex justify-content-between p-3 mb-3'>
+                                        <Link to={item.link} key={index} className="text-decoration-none text-black">
+                                            <div className='d-flex justify-content-between p-3 hover mb-3'>
                                                 <span><FontAwesomeIcon icon={item.icon} className="me-2" /> {item.name}</span>
                                                 <FontAwesomeIcon icon={faChevronRight} />
                                             </div>
@@ -79,20 +79,14 @@ export default function ProfilePage() {
                     </div>
                     <div className='col-9  mt-3 p-0'>
                         <MDBContainer className="ms-2">
-                            <MDBRow>
-                                <MDBCol>
-
-                                    <div className='d-flex justify-content-between bg-white p-3 rounded-3 mb-3 shadow-sm'>
+                                    <div className='d-flex justify-content-between bg-white p-3 rounded-3 mb-3 shadow-sm  sticky-top'>
                                         <div>
-                                            <Link to="product-add"><button className='btn btn-primary me-2'>Đăng tin</button></Link>
+                                            <Link to="/product/add"><button className='btn btn-primary me-2'>Đăng tin</button></Link>
                                             <Link to="/user/update/1"><button className='btn btn-success me-2'>Sửa profile</button></Link>
                                             <button className='btn btn-info me-2' onClick={() => setShow(true)}>Đổi mật khẩu</button>
                                         </div>
                                         <button className='btn btn-danger rounded-5'>Đăng xuất</button>
                                     </div>
-
-                                </MDBCol>
-                            </MDBRow>
 
                             <MDBRow>
                                 <MDBCol lg="4">
@@ -225,6 +219,138 @@ export default function ProfilePage() {
                                             </tr>
                                         </MDBTableHead>
                                         <MDBTableBody>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope='row'>1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
                                             <tr>
                                                 <th scope='row'>1</th>
                                                 <td>Mark</td>

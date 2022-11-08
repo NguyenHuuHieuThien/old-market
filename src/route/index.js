@@ -18,19 +18,20 @@ import Adduser from '../layout/Adduser';
 //Public Routes
 export const publicRoutes = [
   { path: '/', component: HomePage },
-  { path: '/products', component: ProductPage },
-  { path: '/product-detail/:id', component: DetailProduct },
+  { path: '/product/list', component: ProductPage },
+  { path: '/product/add', component: AddproductPage },
+  { path: '/product/:id', component: DetailProduct },
+  { path: '/user/profile/:id', component: ProfilePage },
+  { path: '/user/update/:id', component: UpdatePage },
+  { path: '/user/add', component: Adduser },
   { path: '/carts', component:Carts },
   { path: '/sign-in', component: SignIn },
   { path: '/sign-up', component: SignUp },
-  { path: '/admin/product-list', component: ProductList },
-  { path: '/product-add', component: AddproductPage },
+  { path: '/admin/products', component: ProductList },
   { path: '/admin/users', component: Users },
   { path: '/admin/trash', component: Trash },
-  { path: '/profile', component: ProfilePage },
-  { path: '/update/:id', component: UpdatePage },
   { path: '/about', component: About },
-  { path: '/add-user', component: Adduser },
+
 ];
 
 export const privateRoutes = [];
