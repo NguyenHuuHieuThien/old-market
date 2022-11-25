@@ -4,7 +4,12 @@ import axios from "axios"
 import Navbars from "../../component/Navbars"
 import Footer from "../../component/Footer"
 import BgUser from "../../component/BgUser"
+import { useSnackbar } from "notistack"
 export default function AddproductPage() {
+    const {enqueueSnackbar} = useSnackbar();
+    const showNoti = ()=>{
+        enqueueSnackbar('Thêm sản phẩm thành công', {variant: 'success'});	
+    }
     const [data, setData] = useState({
         name: "",
         category: "",
@@ -45,6 +50,7 @@ export default function AddproductPage() {
     }
     return (
         <BgUser>
+            <button onClick={showNoti}>show noti</button>
             <form onSubmit={(e) => submit(e)}>
                 <div className="px-5 py-3 text-start">
                     <h1 className="mb-5 mt-5">Đăng bán Sản phẩm</h1>

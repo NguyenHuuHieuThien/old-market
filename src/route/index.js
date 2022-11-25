@@ -21,7 +21,7 @@ export const publicRoutes = [
   { path: '/product/list', component: ProductPage },
   { path: '/product/add', component: AddproductPage },
   { path: '/product/:id', component: DetailProduct },
-  { path: '/user/profile/:id', component: ProfilePage },
+  { path: '/user/profile', component: ProfilePage },
   { path: '/user/update/:id', component: UpdatePage },
   { path: '/user/add', component: Adduser },
   { path: '/carts', component:Carts },

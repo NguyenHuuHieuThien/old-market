@@ -1,4 +1,4 @@
-import ImageGallery from 'react-image-gallery';
+// import ImageGallery from 'react-image-gallery';
 import { Row, Col } from 'react-bootstrap'
 import { useState } from 'react';
 
@@ -8,23 +8,11 @@ import { useParams } from 'react-router-dom';
 import province from './../../Province/data.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck, faPlus, faCirclePlus, faCircleCheck, faCircleMinus, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import ImageGallery from '../../component/ImageGalery';
 const images = [
-    {
-        original: 'https://picsum.photos/id/1018/1000/600/',
-        thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    },
-    // {
-    //     original: 'https://picsum.photos/id/1015/1000/600/',
-    //     thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    // },
-    // {
-    //     original: 'https://picsum.photos/id/1019/1000/600/',
-    //     thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    // },
-    // {
-    //     original: 'https://picsum.photos/id/1019/1000/600/',
-    //     thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    // },
+    "https://cdn.tgdd.vn/Files/2016/08/31/881752/quoc-khanh-2-9-760-3671.jpg",
+    "https://cdn.tgdd.vn/Files/2017/08/24/1015732/online-friday-760-367.png",
+    "https://cdn.tgdd.vn/Files/2018/12/28/1141041/sam-tet-ruoc-loc-mung-nam-moi-2019-vo-van-uu-dai-hap-dan-tai-dien-may-xanh-760x367.png"
 ];
 
 
@@ -41,7 +29,7 @@ export default function DetailProduct() {
                 <div className='container shadow-sm bg-white p-3 mt-3 rounded-3 text-start'>
                     <Row>
                         <Col md={6}>
-                            <ImageGallery items={images} />
+                            <ImageGallery images={images}/>
                         </Col>
                         <Col md={6}>
                             <h2 className='mb-4'>Product Name</h2>
@@ -97,32 +85,14 @@ export default function DetailProduct() {
                         <div className='row'>
                             <div className='col-4 mb-3'>
                                 <div>
-                                    <span className='me-3'>Đánh giá</span>
-                                    <span className='text-main'>45,6k</span>
+                                    <span className='me-3'>Email</span>
+                                    <span className='text-main'>nguyenthienn3347@gmail.com</span>
                                 </div>
                             </div>
                             <div className='col-4 mb-3'>
                                 <div>
-                                    <span className='me-3'>Đánh giá</span>
-                                    <span className='text-main'>45,6k</span>
-                                </div>
-                            </div>
-                            <div className='col-4 mb-3'>
-                                <div>
-                                    <span className='me-3'>Đánh giá</span>
-                                    <span className='text-main'>45,6k</span>
-                                </div>
-                            </div>
-                            <div className='col-4 mb-3'>
-                                <div>
-                                    <span className='me-3'>Đánh giá</span>
-                                    <span className='text-main'>45,6k</span>
-                                </div>
-                            </div>
-                            <div className='col-4 mb-3'>
-                                <div>
-                                    <span className='me-3'>Đánh giá</span>
-                                    <span className='text-main'>45,6k</span>
+                                    <span className='me-3'>SĐT</span>
+                                    <span className='text-main'>0941549525</span>
                                 </div>
                             </div>
 
@@ -250,7 +220,7 @@ export default function DetailProduct() {
                         <div>
                             <div>
                                 <div className="row mt-2 p-2">
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-3">
                                         <div className="bg-white border-main">
                                             <div className="">
                                                 <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />
@@ -264,7 +234,7 @@ export default function DetailProduct() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-3">
                                         <div className="bg-white border-main">
                                             <div className="">
                                                 <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />
@@ -278,7 +248,7 @@ export default function DetailProduct() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-3">
                                         <div className="bg-white border-main">
                                             <div className="">
                                                 <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />
@@ -292,7 +262,7 @@ export default function DetailProduct() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-3">
                                         <div className="bg-white border-main">
                                             <div className="">
                                                 <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />
@@ -306,7 +276,7 @@ export default function DetailProduct() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-3">
                                         <div className="bg-white border-main">
                                             <div className="">
                                                 <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />
@@ -320,21 +290,7 @@ export default function DetailProduct() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
-                                        <div className="bg-white border-main">
-                                            <div className="">
-                                                <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />
-                                            </div>
-                                            <div className="px-3 pb-2 mt-2 text-start">
-                                                <div style={{ fontSize: '14px' }}>áo khoác thể thao 3 sọc chất thun nỉ dày dặn</div>
-                                                <div className="d-flex justify-content-between">
-                                                    <div className="text-main">45.000</div>
-                                                    <div className="form-text">đã bán 968</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-3 col-sm-3 col-md-4 col-lg-2 col-xl-2 mb-3">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-3">
                                         <div className="bg-white border-main">
                                             <div className="">
                                                 <img src="https://cf.shopee.vn/file/8614a7dc701d14d3ca05527edee54a17" width="100%" />

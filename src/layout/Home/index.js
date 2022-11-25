@@ -4,6 +4,20 @@ import Products from "../../component/Product"
 import SlideShow from "../../component/SlideShow"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+const categories = [
+    'table',
+    'motobike',
+    'chair',
+    'cabinet',
+    'bed',
+    'clother',
+    'shoes',
+    'watch',
+    'bag',
+    'phone',
+    'laptop',
+    'computer',
+]
 export default function HomePage() {
     return (
         <div className="bg-main">
@@ -12,88 +26,13 @@ export default function HomePage() {
                 <SlideShow />
                 <div className="mt-5">
                     <h2>Danh mục</h2>
-                    <div>
-                        <div className="row">
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                </div>
-                                <span>Thời trang nam</span>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                            <div className="col border border-primary m-2">
-                                <div>
-                                    <div>
-                                        <img src="https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn" width='150px' />
-                                    </div>
-                                    <span>Thời trang nam</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul className='d-flex justify-content-center list-unstyled gap-2 mt-3'>
+                    {categories.map((category, index) =>
+                        <li key={index} className='btn btn-outline-info px-3' role="button">
+                            <a className='text-lg text-decoration-none  p-2'>{category}</a>
+                        </li>
+                    )}
+                </ul>
                 </div>
             </div>
             <div className="container mt-3  bg-white shadow-sm">
